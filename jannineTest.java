@@ -232,21 +232,22 @@ public class jannineTest {
 
           // ***** FamilyProfile *****
         /**
-         *  - getFamilyNumber
-         *  - setFamilyNumber
-         *  - getAdultsNum
-         *  - setAdultsNum
-         *  - getChildrenUnderEight
-         *  - setChildrenUnderEight
-         *  - getChildrenOverEight
-         *  - setChildrenOverEight
-         *  - getGender
-         *  - setGender
+         *  - getFamilyNumber *
+         *  - setFamilyNumber *
+         *  - getAdultsNum    *
+         *  - setAdultsNum    * 
+         *  - getChildrenUnderEight * 
+         *  - setChildrenUnderEight * 
+         *  - getChildrenOverEight * 
+         *  - setChildrenOverEight * 
+         *  - getGender // confused on how we would implement this 
+         *  - setGender // gender only matters for the adults but how
+         *              // will we know what adult we're assigning it to???
          */
 
          // test for setFamilyNumber
          @Test
-         public void testSetFamilyNumber(){
+         public void testSetFamilyNumberID(){
              FamilyProfile theFam = new FamilyProfile();
              theFam.setFamilyNumber(150);
              int familyNumber = theFam.getFamilyNumber();
@@ -256,10 +257,69 @@ public class jannineTest {
 
          // test for getFamilyNumber
          @Test
-         public void testGetFamilyNumber(){
-             
+         public void testGetFamilyNumberID(){
+             FamilyProfile theFam = new FamilyProfile(110);
+             int familyNumber =  theFam.getFamilyNumber();
+             int expectedFamilyNumber = 110;
+             assertEquals("Method getFamilyNumber did not return the expected results:", expectedFamilyNumber, familyNumber);
          }
 
+         // test for get the number of adults in family getAdultsNum
+         @Test
+         public void testGetNumberOfAdultsNum(){
+             FamilyProfile theFam = new FamilyProfile(150, 2, 3, 1);
+             int numAdults = theFam.getAdultsNum();
+             int numAdultsExpected = 2;
+             assertEquals("Method getAdultsNum did not return the expected results:", numAdultsExpected, numAdults);
+         }
+
+         // test setter for setting the number of adults in a family
+         @Test
+         public void testSetNumberOfAdults(){
+             FamilyProfile theFam = new FamilyProfile();
+             theFam.setAdultsNum(2);
+             int numAdults = theFam.getAdultsNum();
+             int numAdultsExpected = 2;
+             assertEquals("Method setAdultsNum did not return the expected results:", numAdultsExpected, numAdults);
+         }
+
+         // test for get the number of children under 8 in family getChildrenUnderEight
+         @Test
+         public void testGetNumberOfChildrenUnderEight(){
+             FamilyProfile theFam = new FamilyProfile(150, 2, 3, 1);
+             int numChildrenUnderEight = theFam.getChildrenUnderEight();
+             int numChildrenUnderEightExpected = 3;
+             assertEquals("Method getChildrenUnderEight did not return the expected results:", numChildrenUnderEightExpected, numChildrenUnderEight);
+         }
+
+         // test setter for setting the number of children under 8 in a family setChildrenUnderEight
+         @Test
+         public void testSetNumberOfChildrenUnderEight(){
+             FamilyProfile theFam = new FamilyProfile();
+             theFam.setchildrenUnderEight(5);
+             int numChildrenUnderEight = theFam.getchildrenUnderEight();
+             int numChildrenUnderEightExpected = 5;
+             assertEquals("Method setChildrenUnderEight did not return the expected results:", numChildrenUnderEightExpected, numChildrenUnderEight);
+         }
+
+         // test for getting the children over eight in the fam 
+         @Test 
+         public void testGetChilrenOverEight(){
+             FamilyProfile theFam = new FamilyProfile(150, 2, 3, 1);
+             int numChildrenOverEight = theFam.getChildrenOverEight();
+             int numChildrenOverEightExpected = 3;
+             assertEquals("Method getChildrenOverEight did not return the expectes results:", numChildrenOverEightExpected, numChildrenOverEight);
+         }
+
+         // test for setting the children over eight in the fam
+         @Test
+         public void testSetChildrenOverEight(){
+             FamilyProfile theFam = new FamilyProfile();
+             theFam.setChildrenOverEight(4);
+             int numChildrenOverEight = theFam.getChildrenOverEight();
+             int numChildrenOverEightExpected = 4;
+             assertEquals("Method setChildrenOverEight did not return the expected results:", numChildrenOverEightExpected, numChildrenOverEight);
+         }
 
 
        // ***** getUser ****
@@ -269,6 +329,8 @@ public class jannineTest {
         *  - getHamper
         *  - differentHampers
         */
+
+        // ***** NutrientType ****** 
 
      
 
