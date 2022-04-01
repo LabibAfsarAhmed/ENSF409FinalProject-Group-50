@@ -323,19 +323,55 @@ public class jannineTest {
 
 
        // ***** getUser ****
+       // interface used by Order class
        /**
         *  - getNumberOfClients
-        *  - getTypeOfClient
-        *  - getHamper
+        *  - getTypeOfClient // type of client is not clear 
+        *  - getHamper 
         *  - differentHampers
         */
 
-        // ***** NutrientType ****** 
+        // test for getting the number of clients
+        @Test testGetNumberOfClients(){
+            Order newOrder = new Order(6); //set number of families in order through constructor
+            int numberOfClients = newOrder.getNumberOfClients();
+            int numberOfClientsExpected = 6;
+            assertEquals("Method getNumberOfClients did not return the expected result:", numberOfClientsExpected, numberOfClients);
+        }
 
-     
+        // test for gettng the type of client 
+
+
+        // test for getHamper 
+
+        // test for differentHampers
+
+
+        // do we need getters and setters for this?
+        // tested the getters and setters for inventory
+        // ***** NutrientType ****** 
+        
 
          // ***** IOEXCEPTIONS *****
          // does placeOrder throw an IOException if wrong info is provided
+
+         // test for IOException when placeOrder is run with invalid data
+         @Test 
+         public void testIsIOExceptionThrown(){
+             String invalidData = "fimly 4 adult, no kids";
+             
+
+             boolean correctException = false;
+             try{
+                Order newOrder = new Order(invalidData);
+             }catch(IOException e){
+                 correctException = true;
+             }
+             assertEquals("Order constructor did not throw an IllegalArugmentException when given invalid input: ",true, correctException);
+
+         } 
+
+
 
    
 }
