@@ -98,7 +98,7 @@ public class jannineTest {
        *  - getOtherContent * 
        *  - getStock * 
        *  - setStock * 
-       *  - getInventory 
+       *  - getInventory *
        */
 
        // getItemID
@@ -153,7 +153,7 @@ public class jannineTest {
         Inventory ourInventory = new Inventory(51, "Cantaloupe, dozen", 0, 100, 0, 0, 10);
         int itemOtherContent = ourInventory.getOtherContent();
         int expectedItemOtherContent = 0;
-        assertEquals("Method getOtherContent not return the expected result:", expectedItemOtherContent itemOtherContent);
+        assertEquals("Method getOtherContent did not return the expected result:", expectedItemOtherContent itemOtherContent);
        }
 
        // test for getStock for inventory item
@@ -162,29 +162,75 @@ public class jannineTest {
         Inventory ourInventory = new Inventory(51, "Cantaloupe, dozen", 0, 100, 0, 0, 10);
         int itemStock = ourInventory.getStock();
         int expectedItemStock= 10;
-        assertEquals("Method getStock not return the expected result:", expectedItemStock, itemStock);
+        assertEquals("Method getStock did not return the expected result:", expectedItemStock, itemStock);
        }
 
        // test for setStock for inventory item
        @Test
-       public void setStock(){
+       public void testSetStock(){
         Inventory ourInventory = new Inventory(51, "Cantaloupe, dozen", 0, 100, 0, 0, 10);
         ourInventory.setStock(5);
         int itemStock = ourInventory.getStock();
         int expectedItemStock = 5;
-        assertEquals("Method setStock not return the expected result:", expectedItemStock, itemStock);
+        assertEquals("Method setStock did not return the expected result:", expectedItemStock, itemStock);
+       }
+      
+       // test for Inventory construction with good input 
+       // this method should not throw an exception since input is good
+       @Test
+       public void testInventoryConstructorGoodInput(){
+           File inventoryFile = new File("Inventory.txt");
+
+           boolean returnIsTrue = true;
+           boolean exceptionThrown = false;
+           Inventory ourInventory = new Inventory(inventoryFile);
+           try{
+               returnIsTrue = ourInventory.readFile();
+           }catch(Exception e){
+               exceptionThrown = true;
+           }
+           assertFalse("An unexpected exception was thrown when reading a valid input file", exceptionThrown);
+           assertTrue("readFile() returned false when operation should have been successful", returnIsTrue);
+
        }
 
+       // test for inventory contructor with bad input data txt file
+       // this method should throw an exception
+       @Test 
+       public void testInventoryConstructorBadInput(){
+           File noSuchFile = new File("this_file_does_not_exist.txt");
 
-       // ***** getUser ****
-       /**
-        *  - getNumberOfClients
-        *  - getTypeOfClient
-        *  - getHamper
-        *  - differentHampers
-        */
+           boolean returnIsTrue = true;
+           boolean exceptionThrown = false;
 
-        // ***** FamilyProfile *****
+           Inventory ourInventory = new Inventory(noSuchFile);
+           try{
+               returnIsTrue = ourInventory.readFile();
+           }catch(Exception e){
+               exceptionThrown = true;
+           }
+           assertFalse("An unexpected exception was thrown when the file couldn't be read", exceptionThrown);
+        assertFalse("readFile() returned true when operation failed due to file not existing", returnIsTrue);
+
+       }
+
+       // test for getInventory (assuming the file was read properly)
+       @Test
+       public void testGetInventory(){
+        File inventoryFile = new File("Inventory.txt");
+
+        boolean returnIsTrue = true;
+        boolean exceptionThrown = false;
+        Inventory ourInventory = new Inventory(inventoryFile);
+        String inventory = ourInventory.getInventor();
+        String expectedInventory = "(Cantaloupe, dozen, 0, 100, 0, 0, 3324, 40),
+        ('Cottage cheese', 0, 0, 11, 89, 840, 60), 
+        ('Trail mix, 1 kg', 21, 0, 20, 59, 6000, 20),";
+        assertEquals("Method getInventory did not return the expected result:", expectedInventory, inventory);
+
+       }
+
+          // ***** FamilyProfile *****
         /**
          *  - getFamilyNumber
          *  - setFamilyNumber
@@ -198,6 +244,33 @@ public class jannineTest {
          *  - setGender
          */
 
+         // test for setFamilyNumber
+         @Test
+         public void testSetFamilyNumber(){
+             FamilyProfile theFam = new FamilyProfile();
+             theFam.setFamilyNumber(150);
+             int familyNumber = theFam.getFamilyNumber();
+             int familyNumberExpected = 150;
+             assertEquals("Method setFamilyNumber did not return the expected results:", familyNumberExpected, familyNumber);
+         }
+
+         // test for getFamilyNumber
+         @Test
+         public void testGetFamilyNumber(){
+             
+         }
+
+
+
+       // ***** getUser ****
+       /**
+        *  - getNumberOfClients
+        *  - getTypeOfClient
+        *  - getHamper
+        *  - differentHampers
+        */
+
+     
 
          // ***** IOEXCEPTIONS *****
          // does placeOrder throw an IOException if wrong info is provided
