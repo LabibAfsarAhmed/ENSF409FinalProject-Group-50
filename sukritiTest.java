@@ -1,7 +1,8 @@
 package edu.ucalgary.ensf409;
 
 import org.junit.*;
-import static org.junit.Assert.*;
+import org.junit.Assert.*;
+
 import java.io.*;
 import java.util.*;
 
@@ -12,20 +13,35 @@ public class sukritiTest {
     // Test the constructor for ConfigureHamper
     @Test
     public void testConfigureHamper() {
-        ConfigureHamper hamper = new ConfigureHamper(orderForm);
+        ConfigureHamper hamperConfigured = new ConfigureHamper(orderForm);
         assertNotNull("ConfigureHamper constructor did not create an object.",
+                hamperConfigured);
+    }
+
+    // Test the constructor for Hamper
+    @Test
+    public void testHamper() {
+        Hamper hamper = new Hamper(orderForm);
+        assertNotNull("Hamper constructor did not create an object.",
                 hamper);
     }
 
-
-
+    //Make sure hamper calculates enough 
     @Test
     public void testCalculateHamper(){
-        int hamper1Calc = calculateHamper(hamper1);
-        int expectedHamper1Calc = 1067;
-        assertEquals("Method CalculateHamper did not return the expected result ", hamper1Calc, expectedHamper1Calc);
-    }
+        int hamperCalc = calculateHamper(hamper);
+        int expectedHamperCalc = 1067;
 
+
+        if(hamperCalc < expectedHamperCalc ){
+            assertEquals("Not enough stock in inventory", expectedHamperCalc, hamperCalc);
+        }
+
+  }
+
+
+
+    /*
     @Test
     public void testGetNewRequest(){
         ConfigureHamper hamper = new ConfigureHamper(orderForm);
@@ -43,28 +59,13 @@ public class sukritiTest {
         String foundRequest = hamper.getNewRequest();
         String expectedRequest = "1 Adult Male, 1 Child over 8";
         assertEquals("Method setNewRequest did not return the expected result: ", expectedRequest, foundRequest);
-    }
+    } */
 
-    @Test
-    public void testGetRequestMultipleHampers(){
+     
 
 
-    }
 
-    @Test 
-    public void testSetRequestMultipleHampers(){
 
-    }
-
-    @Test 
-    public void testHamper(){
-        
-    }
-
-    @Test 
-    public void testGetListFoodItems(){
-
-    }
 
 }
 
