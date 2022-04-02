@@ -1,7 +1,7 @@
 package edu.ucalgary.ensf409;
 
 import org.junit.*;
-import org.junit.Assert.*;
+import static org.junit.Assert.*;
 
 import java.io.*;
 import java.util.*;
@@ -29,18 +29,12 @@ public class sukritiTest {
     //Make sure hamper calculates enough 
     @Test
     public void testCalculateHamper(){
-        int hamper1Calc = calculateHamper(hamper1);
-        int expectedHamper1Calc = 1067;
-        if(hamper1Calc < expectedHamper1Calc ){
-            assertEquals("Not enough stock in inventory", expectedHamper1Calc, hamper1Calc);
+        Hamper hamper = new Hamper(orderForm);
+        int hamperCalc = calculateHamper(hamper);
+        int expectedHamperCalc = hamper.getCaloriesExpected();    //ADD NEW VARIABLE CALORESEXPECTED
+        if(hamperCalc < expectedHamperCalc ){
+            assertEquals("Not enough stock in inventory", expectedHamperCalc, hamperCalc);
         }
-
-        int hamper2Calc = calculateHamper(hamper2);
-        int expectedHamper2Calc = 2134;
-        if (hamper2Calc < expectedHamper2Calc) {
-            assertEquals("Not enough stock in inventory", expectedHamper2Calc, hamper2Calc);
-        }
-
   }
 
 
