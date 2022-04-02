@@ -240,9 +240,6 @@ public class jannineTest {
          *  - setChildrenUnderEight * 
          *  - getChildrenOverEight * 
          *  - setChildrenOverEight * 
-         *  - getGender // confused on how we would implement this 
-         *  - setGender // gender only matters for the adults but how
-         *              // will we know what adult we're assigning it to???
          */
 
          // test for setFamilyNumber
@@ -322,15 +319,6 @@ public class jannineTest {
          }
 
 
-       // ***** getUser ****
-       // interface used by Order class
-       /**
-        *  - getNumberOfClients
-        *  - getTypeOfClient // type of client is not clear 
-        *  - getHamper 
-        *  - differentHampers
-        */
-
         // test for getting the number of clients
         @Test testGetNumberOfClients(){
             Order newOrder = new Order(6); //set number of families in order through constructor
@@ -338,18 +326,6 @@ public class jannineTest {
             int numberOfClientsExpected = 6;
             assertEquals("Method getNumberOfClients did not return the expected result:", numberOfClientsExpected, numberOfClients);
         }
-
-        // test for gettng the type of client 
-
-
-        // test for getHamper 
-
-        // test for differentHampers
-
-
-        // do we need getters and setters for this?
-        // tested the getters and setters for inventory
-        // ***** NutrientType ****** 
         
 
          // ***** IOEXCEPTIONS *****
@@ -371,7 +347,4 @@ public class jannineTest {
 
          } 
 
-
-
-   
 }
