@@ -3,11 +3,11 @@ public class labibTest {
     @Test 
     public void weeklyServicesWorks() {
         if (familyProfile.mobility == true) {
-            int numberofFamilies = 2;
+            int numberofFamilyHampersNeeded = Order.NUMBER_OF_FAMILIES;
 
             CreateMultipleHamper multipleHamper = new CreateMultipleHamper();
             int numberofHampers = multipleHamper.CalculateHamper();
-            assertEquals(2, numberofHampers);
+            assertEquals("The correct number of weekly hampers not made.", numberofFamilyHampersNeeded, numberofHampers);
         }
         
         else {
