@@ -29,12 +29,16 @@ public class sukritiTest {
     //Make sure hamper calculates enough 
     @Test
     public void testCalculateHamper(){
-        int hamperCalc = calculateHamper(hamper);
-        int expectedHamperCalc = 1067;
+        int hamper1Calc = calculateHamper(hamper1);
+        int expectedHamper1Calc = 1067;
+        if(hamper1Calc < expectedHamper1Calc ){
+            assertEquals("Not enough stock in inventory", expectedHamper1Calc, hamper1Calc);
+        }
 
-
-        if(hamperCalc < expectedHamperCalc ){
-            assertEquals("Not enough stock in inventory", expectedHamperCalc, hamperCalc);
+        int hamper2Calc = calculateHamper(hamper2);
+        int expectedHamper2Calc = 2134;
+        if (hamper2Calc < expectedHamper2Calc) {
+            assertEquals("Not enough stock in inventory", expectedHamper2Calc, hamper2Calc);
         }
 
   }
