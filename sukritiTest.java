@@ -45,6 +45,27 @@ public class sukritiTest {
         assertEquals("Method setNewRequest did not return the expected result: ", expectedRequest, foundRequest);
     }
 
+    @Test
+    public void testGetRequestMultipleHampers(){
+
+
+    }
+
+    @Test 
+    public void testSetRequestMultipleHampers(){
+
+    }
+
+    @Test 
+    public void testHamper(){
+        
+    }
+
+    @Test 
+    public void testGetListFoodItems(){
+
+    }
+
 }
 
 
