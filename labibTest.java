@@ -9,7 +9,7 @@ public class labibTest {
     @Test 
     public void weeklyServicesWorks() {
         if (familyProfile.mobility == true) {
-            int numberofFamilyHampersNeeded = Order.NUMBER_OF_FAMILIES;
+            int numberofFamilyHampersNeeded = Order.NUMBER_OF_FAMILIES();
 
             CreateMultipleHamper multipleHamper = new CreateMultipleHamper();
             int numberofHampers = multipleHamper.CalculateHamper();
