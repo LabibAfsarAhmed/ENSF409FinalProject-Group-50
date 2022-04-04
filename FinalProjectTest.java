@@ -16,8 +16,8 @@ public class FinalProjectTest {
     // getters and setters tests needed:
 
     /** ***** ConfigureHamper *****
-     * getNewRequest // done
-     * setNewRequest // done
+     * getNewRequest
+     * setNewRequest
      * getRequestMultipleHampers
      * setRequestMultipleHampers
      */
@@ -325,7 +325,8 @@ public class FinalProjectTest {
     }
 
     // test for getting the number of clients
-    @Test testGetNumberOfClients(){
+    @Test 
+    testGetNumberOfClients(){
             Order newOrder = new Order(6); //set number of families in order through constructor
             int numberOfClients = newOrder.getNumberOfClients();
             int numberOfClientsExpected = 6;
