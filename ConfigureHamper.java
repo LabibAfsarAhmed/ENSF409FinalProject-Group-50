@@ -2,13 +2,12 @@ import java.util.*;
 import java.io.*;
 public class ConfigureHamper extends Hamper {
 
-    private static String requestNewMultipleHampers;
-    private static String newRequest;
-    public List<Integer> foodID = new ArrayList<>();
+    //private static String requestNewMultipleHampers;
+    //private static String newRequest;
+    //public List<Integer> foodID = new ArrayList<>();
 
     public ConfigureHamper(String form){
         this.newRequest = newRequest;
-    //somehow get all the items from order form
     // store it in an array list
     //form will be an adjaceny matrix or convert it to a txt file?
         while (form.hasNextLine()){

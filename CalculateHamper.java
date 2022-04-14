@@ -10,6 +10,7 @@ public class CalculateHamper extends ConfigureHamper {
         int under8 = getChildrenUnder8();
 
     }
+    
     //need to come up with the algorithm, expected values and how to access database
     //first add items in hamper,and calculate each part(grain, FV, protein,etc), then if it is under the amount needed,
     //add the item with the lowest amount. then if that is not enough, add the second lowest amount
