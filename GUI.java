@@ -21,12 +21,17 @@ public class GUI{
     static int adultMales;
     static int childrenOver8Yrs;
     static int childrenUnder8Yrs;
+    static int multipleHampers;
+    static int weeklyServiceHampers;
     static JTextField employeeIn = new JTextField("First name, last name");
-    static JSpinner familyNum = new JSpinner();
+    //static JSpinner familyNum = new JSpinner();
     static JSpinner AdultFemales = new JSpinner();
     static JSpinner AdultMales = new JSpinner();
     static JSpinner childrenOver8 = new JSpinner();
     static JSpinner childrenUnder8 = new JSpinner();
+    static JSpinner multipleHamperSelect = new JSpinner();
+    static JSpinner weeklyServiceNeeded = new JSpinner();
+    static JTextField numOfFams = new JTextField("  ");
     public static void main(String args[]){
         
 
@@ -43,14 +48,18 @@ public class GUI{
             JPanel titlePanel = new JPanel();
             
 
-            JButton submit = new JButton("Submit");
-            JLabel instructions = new JLabel("Please enter the required information to produce a hamper order form");
+            JButton submit = new JButton("Submit family");
+            JButton doneSubmit = new JButton("Submit final order");
+            JLabel instructions = new JLabel("Please enter the required information to produce a hamper order form.");
             JLabel employeeLabel = new JLabel("Please enter employee name:");
-            JLabel famillies = new JLabel("Please enter the number of families");
+            //JLabel famillies = new JLabel("Please enter the number of families");
             JLabel family1Females = new JLabel("Please enter the number of adult females in family:");
             JLabel familyMales = new JLabel("Please enter the number of adult males in family:");
             JLabel familyOver8 = new JLabel("Please enter the number of children over 8 in family");
             JLabel familyUnder8 = new JLabel("Please enter the number of children under 8 in family");
+            JLabel multipleHampersLbl = new JLabel("Please enter the number of hampers to configure");
+            JLabel weeklyServiceLbl = new JLabel("If there are mobility concerns, please enter the number of hampers desired for weekly service");
+            JLabel numberOfFams = new JLabel("The number of families submitted: ");
 
             
 
@@ -58,7 +67,6 @@ public class GUI{
             titlePanel.add(instructions);
             clientPanel.add(employeeLabel);
             clientPanel.add(employeeIn);
-            clientPanel.add(famillies);
             rightPanel.add(family1Females);
             rightPanel.add(AdultFemales);
             rightPanel.add(familyMales);
@@ -67,8 +75,15 @@ public class GUI{
             rightPanel.add(childrenOver8);
             rightPanel.add(familyUnder8);
             rightPanel.add(childrenUnder8);
+            rightPanel.add(multipleHampersLbl);
+            rightPanel.add(multipleHamperSelect);
+            rightPanel.add(weeklyServiceLbl);
+            rightPanel.add(weeklyServiceNeeded);
 
-            clientPanel.add(familyNum);
+            buttonPanel.add(doneSubmit);
+            buttonPanel.add(doneSubmit);
+            buttonPanel.add(numberOfFams);
+            buttonPanel.add(numOfFams);
 
 
            // MyListener buttonListener = new MyListener();
@@ -76,10 +91,8 @@ public class GUI{
              submitAction();
         });
 
-
-
-            //MyListener buttonListener = new MyListener();
-            //myButton.addActionListener(buttonListener);
+            MyListener buttonListener = new MyListener();
+            doneSubmit.addActionListener(buttonListener);
             //buttonsPanel.add(myButton);
 
             //frame.getContentPane().add(BorderLayout.NORTH, buttonsPanel); //layout manager used here (will place it north most of the frame)
@@ -96,12 +109,19 @@ public class GUI{
 
     private static void submitAction() {
         // we will eventually store these in another class 
+        families += 1;
         employeeName = employeeIn.getText();
-        families = (int)familyNum.getValue();
         adultFemales = (int)AdultFemales.getValue();
         adultMales = (int)AdultMales.getValue();
         childrenOver8Yrs = (int)childrenOver8.getValue();
         childrenUnder8Yrs = (int)childrenUnder8.getValue();
+        multipleHampers = (int)multipleHamperSelect.getValue();
+        weeklyServiceHampers = (int)weeklyServiceNeeded.getValue();
+
+ 
+        FamilyProfile family = new FamilyProfile(adultFemales, adultMales, childrenOver8Yrs, childrenUnder8Yrs, multipleHampers, weeklyServiceHampers);
+        // do actions to create hamper for them here too
+
 
         System.out.println(employeeName);
         System.out.println(families);
@@ -109,6 +129,16 @@ public class GUI{
         System.out.println(adultMales);
         System.out.println(childrenOver8Yrs);
         System.out.println(childrenUnder8Yrs);
+        System.out.println(multipleHampers);
+        System.out.println(weeklyServiceHampers);
+
+        AdultFemales.setValue(0);
+        AdultMales.setValue(0);
+        childrenOver8.setValue(0);
+        childrenUnder8.setValue(0);
+        multipleHamperSelect.setValue(0);
+        weeklyServiceNeeded.setValue(0);
+        numOfFams.setText(Integer.toString(families));
     }
 }
 
