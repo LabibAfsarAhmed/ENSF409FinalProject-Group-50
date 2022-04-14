@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class NutrientType {
     private int itemID;
     private String name;
@@ -26,8 +28,32 @@ public class NutrientType {
           this.proteinContent = proteinContent;
           this.other = other;
           this.calories = calories;
+    }
+
+    public NutrientType(){
+        Scanner scan = new Scanner(System.in);
+            System.out.println("Please enter item ID: ");
+            itemID = scan.nextInt();  
+
+            System.out.println("Please enter family name: ");
+            name = scan.toString();    
+            
+            System.out.println("Please enter grain: ");
+            grains = scan.nextInt();  
+
+            System.out.println("Please enter fruits and vegetables: ");
+            fruitsVeggies = scan.nextInt();     
+
+            System.out.println("Please enter protein: ");
+            protein = scan.nextInt();   
+
+            System.out.println("Please enter other items: ");
+            other = scan.nextInt();   
+            
+            scan.close();
       }
-  
+      
+
       public int getItemID() {
           return this.itemID;
       }
