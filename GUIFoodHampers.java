@@ -5,10 +5,22 @@ import java.awt.event.*;
 
 public class GUIFoodHampers extends JFrame implements ActionListener, MouseListener{
 
+    public static void main(String[] args){
+        // GUIFoodHampers initial = new GUIFoodHampers();
+        EventQueue.invokeLater(() -> {
+             new GUIFoodHampers().setVisible(true);
+         });
+         
+     }
+     
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private String employeeName;
     private String family;
     private int numberOfFamilies;
-    private String familyComp;
 
     private JLabel instructions;
     private JLabel employeeLabel;
@@ -63,6 +75,7 @@ public class GUIFoodHampers extends JFrame implements ActionListener, MouseListe
     public void actionPerformed(ActionEvent event){
         this.employeeName = employeeNameIn.getText();
         this.numberOfFamilies = Integer.parseInt(numFamiliesIn.getText());
+
     }
 
     public void mouseClicked(MouseEvent event){
@@ -89,12 +102,4 @@ public class GUIFoodHampers extends JFrame implements ActionListener, MouseListe
     public void mouseReleased(MouseEvent event){
 
     }
-
-    public static void main(String[] args){
-       // GUIFoodHampers initial = new GUIFoodHampers();
-       EventQueue.invokeLater(() -> {
-            new GUIFoodHampers().setVisible(true);
-        }); 
-    }
-    
 }
