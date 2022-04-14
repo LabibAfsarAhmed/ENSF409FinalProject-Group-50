@@ -62,7 +62,6 @@ public class GUIFoodHampers extends JFrame implements ActionListener, MouseListe
     public void actionPerformed(ActionEvent event){
         this.employeeName = employeeNameIn.getText();
         this.numberOfFamilies = Integer.parseInt(numFamiliesIn.getText());
-
     }
 
     public void mouseClicked(MouseEvent event){
