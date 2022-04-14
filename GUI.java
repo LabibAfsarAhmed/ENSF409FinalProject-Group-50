@@ -7,6 +7,7 @@ import java.awt.event.*;
 // * a place for the name to be entered
 // * the date
 // * an option to select number of families
+
 // * an input box for the families to enter composition
 // * a place to request if one family wants multiple hampers configured
 // * finally a place to press enter on the GUI to submit the request for the order form
@@ -48,5 +49,5 @@ class MyListener implements ActionListener{
 
 class GUIFoodHampers extends JFrame implements ActionListener, MouseListener{
 
-    
+
 }

@@ -8,6 +8,7 @@ public class GUIFoodHampers extends JFrame implements ActionListener, MouseListe
     private String employeeName;
     private String family;
     private int numberOfFamilies;
+    private String familyComp;
 
     private JLabel instructions;
     private JLabel employeeLabel;
@@ -93,8 +94,7 @@ public class GUIFoodHampers extends JFrame implements ActionListener, MouseListe
        // GUIFoodHampers initial = new GUIFoodHampers();
        EventQueue.invokeLater(() -> {
             new GUIFoodHampers().setVisible(true);
-        });
-        
+        }); 
     }
     
 }
