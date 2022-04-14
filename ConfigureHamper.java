@@ -14,7 +14,6 @@ public class ConfigureHamper extends Hamper {
         while (form.hasNextLine()){
             int id = form.nextLine();
             foodID.add(id);        //fills up list with all the food items from form
-
         }
         setList(foodID);  //full array with all the items are set
     }
