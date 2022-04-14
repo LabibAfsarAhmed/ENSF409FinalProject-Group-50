@@ -13,6 +13,8 @@
 import java.sql.*;
 
 class mainTest{
+
+    // main method for testing
     public static void main(String[] args){
         Inventory newInv = new Inventory();
         newInv.getInventory();
@@ -30,7 +32,7 @@ public class Inventory {
     private int protein;
     private int fruitsVeggies;
     private int otherContent;
-    private int stock;
+    //private int stock;
     //private String inputFile;
     //private NutrientType nutrientHelper = new NutrientType();
     
@@ -38,8 +40,6 @@ public class Inventory {
         
     }
     
-
-
     public Inventory(int itemID, String name, int grain, int fruitsVeggies, int protein, int otherContent, int stock){
 
     }
@@ -79,14 +79,6 @@ public class Inventory {
     public int getStock(){
         //return this.stock;
         return 0;
-    }
-
-    public void setStock(int setStock) throws ShortageException{
-        if(setStock > this.stock){
-            throw new ShortageException();
-        }else{
-            this.stock = setStock;
-        }
     }
 
     // will access the database
