@@ -17,7 +17,8 @@ class mainTest{
     // main method for testing
     public static void main(String[] args){
         Inventory newInv = new Inventory();
-        newInv.getInventory();
+        Inventory h = newInv.getInventory();
+        System.out.println(h.getCalories());
     }
 }
 public class Inventory {
@@ -100,10 +101,10 @@ public class Inventory {
     }
 
     // will access the database
-    public String getInventory(){
+    public Inventory getInventory(){
         // Step 1: Creat a connection
         try{
-        dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/inventory", "student", "ensf");
+        dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/food_inventory", "student", "ensf");
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -124,6 +125,7 @@ public class Inventory {
             int tempOther[] = new int[400];
             int tempCalories[] = new int[400];
             int i = 0;
+        
             while(results.next()){
                 //System.out.println("Print results:" + results.getString("Name"));
                 tempID[i] = i;
@@ -132,17 +134,18 @@ public class Inventory {
                 tempProContent[i] = results.getInt("ProContent");
                 tempOther[i] = results.getInt("Other");
                 tempCalories[i] = results.getInt("Calories");
-                new Inventory(tempID, tempGrainContent, tempFVContent, tempProContent, tempOther, tempCalories);
-                numberItemsInventory +=1;
                 i+=1; 
+                numberItemsInventory +=1;
 
             }
+            Inventory theInv = new Inventory(tempID, tempGrainContent, tempFVContent, tempProContent, tempOther, tempCalories);
+            return theInv;        
         
         }catch(SQLException ex){
             ex.printStackTrace();
         }
-        return " ";
-
+        Inventory theInt = new Inventory();
+        return theInt;
     }
 
     // will have to take in the created hamper and remove the items
