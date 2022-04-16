@@ -20,7 +20,7 @@ public class Driver {
 
         List<WeeklyNutrientProfile> weeklyNutrientProfiles = new ArrayList<>();
         for (FamilyProfile familyProfile : order.getRequestedFamilies()) {
-            InventoryDao dao = new InventoryDao();
+            ClientDailyNeedData dao = new ClientDailyNeedData();
             weeklyNutrientProfiles.add(dao.calculateWeeklyFamilyCalories(familyProfile));
         }
 

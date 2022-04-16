@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class InventoryDao {
+public class ClientDailyNeedData {
 
     /*
      * public List<DailyNeed> getDailyNeeds() {
