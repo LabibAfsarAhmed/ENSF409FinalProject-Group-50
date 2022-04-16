@@ -49,9 +49,9 @@ public class InventoryDao {
         return dailyNeed;
     }
 
-    public void calculateWeeklyFamilyNeeds(FamilyProfile familyProfile) {
+    public WeeklyNutrientProfile calculateWeeklyFamilyCalories(FamilyProfile familyProfile) {
         // InventoryDao dao = new InventoryDao();
-        int totalCalories = 0;
+        long totalCalories = 0;
         if (familyProfile.getAdultMale() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);
             totalCalories = totalCalories + (maleDailyNeed.getCalories() * 7 * familyProfile.getAdultMale());
@@ -71,12 +71,8 @@ public class InventoryDao {
                     + (childUnderDailyNeed.getCalories() * 7 * familyProfile.getChildrenUnderEight());
         }
 
-        System.out.println(totalCalories);
+        return new WeeklyNutrientProfile(0, 0, 0, 0, totalCalories);
 
     }
 
-    public static void main(String[] args) {
-        InventoryDao dao = new InventoryDao();
-        dao.calculateWeeklyFamilyNeeds(new FamilyProfile(1, 2, 0, 0, false));
-    }
 }

@@ -17,6 +17,13 @@ public class Order {
         this.createdHampers = new ArrayList<>();
     }
 
+    public List<FamilyProfile> getRequestedFamilies() {
+        return requestedFamilies;
+    }
+    public List<FoodItem> getCreatedHampers() {
+        return createdHampers;
+    }
+
     public void setCreatedHamper(List<FoodItem> createdHampers) {
         this.createdHampers = createdHampers;
     }
@@ -40,5 +47,6 @@ public class Order {
 
         return sb.toString();
     }
+
 
 }
