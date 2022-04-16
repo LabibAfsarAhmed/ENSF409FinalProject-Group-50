@@ -1,45 +1,30 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.Scanner;
 
+=======
+>>>>>>> db31d11ed78c9725df1fc6feaeda0d16291fd871
 public class FamilyProfile {
-    
-    private int familyNum;
-    private int adultsNum;
+    private int adultMale;
+    private int adultFemale;
     private int childrenUnderEight;
     private int childrenOverEight;
-    private String gender;
     private boolean mobility;
 
-    public FamilyProfile() {
-        Scanner scan = new Scanner(System.in);
-
-        System.out.println("Enter number of family members: ");
-        familyNum = scan.nextInt();
-
-        System.out.println("Enter number of adult family members: ");
-        adultsNum = scan.nextInt();
-
-        System.out.println("Enter number of children under eight years old: ");
-        childrenUnderEight = scan.nextInt();
-
-        System.out.println("Enter number of children over eight years old: ");
-        childrenOverEight = scan.nextInt();
-
-        System.out.println("Enter number of children over eight years old: ");
-        gender = scan.nextLine();
-
-        System.out.println("Do you need weekly services?(y/n): ");
-        mobility = scan.nextBoolean();
-
-        scan.close();
+    public FamilyProfile(int adultMale, int adultFemale,  int childrenUnderEight, int childrenOverEight, boolean mobility) {
+        this.adultMale = adultMale;
+        this.adultFemale = adultFemale;
+        this.childrenUnderEight = childrenUnderEight;
+        this.childrenOverEight = childrenOverEight;
+        this.mobility = mobility;
     }
 
-    public int getFamilyNumber() {
-        return familyNum;
+    public int getAdultMale() {
+        return adultMale;
     }
 
-    public int getAdultsNum() {
-        return adultsNum;
+    public int getAdultFemale() {
+        return adultFemale;
     }
 
     public int getChildrenUnderEight() {
@@ -47,18 +32,14 @@ public class FamilyProfile {
     }
 
     public int getChildrenOverEight() {
-        return childrenOverEight; 
+        return childrenOverEight;
     }
 
-    public String getGender() {
-        return gender;
-
-    }
-
-    public boolean getmobility() {
+    public boolean isMobility() {
         return mobility;
     }
 
+<<<<<<< HEAD
     public void getFamilyNumber(int familyNum) {
         this.familyNum = familyNum;
     }
@@ -128,4 +109,22 @@ public class FamilyProfile {
     }
 
 >>>>>>> ce069e862eae348dbd1399009c31f330dd6986d1
+=======
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        if (adultMale > 0)
+            sb.append(" ").append(adultMale).append(" Adult Male,");
+        if (adultFemale > 0)
+            sb.append(" ").append(adultFemale).append(" Adult Female,");
+        if (childrenUnderEight > 0)
+            sb.append(" ").append(childrenUnderEight).append(" Child under 8,");
+        if (childrenOverEight > 0)
+            sb.append(" ").append(childrenOverEight).append(" Child over 8,");
+        if (mobility)
+            sb.append(" Weekly Service Needed,");
+        
+        return sb.toString().replaceAll(",$", "");
+    }
+
+>>>>>>> db31d11ed78c9725df1fc6feaeda0d16291fd871
 }
