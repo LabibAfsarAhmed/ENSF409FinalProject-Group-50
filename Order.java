@@ -3,12 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    
+
     private String employeeName;
     private LocalDateTime date;
 
     private List<FamilyProfile> requestedFamilies;
-    private List<Hamper> createdHampers;
+    private List<FoodItem> createdHampers;
 
     public Order(String employeeName, List<FamilyProfile> requestedFamilies) {
         this.employeeName = employeeName;
@@ -17,11 +17,15 @@ public class Order {
         this.createdHampers = new ArrayList<>();
     }
 
+    public void setCreatedHamper(List<FoodItem> createdHampers) {
+        this.createdHampers = createdHampers;
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Name: ").append(employeeName);
         sb.append("\nDate: ").append(date);
-        
+
         sb.append("\n\nOriginal Request\n");
         for (int i = 0; i < requestedFamilies.size(); i++) {
             sb.append("Hamper ").append(i + 1).append(":");
