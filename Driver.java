@@ -25,11 +25,10 @@ public class Driver {
         }
 
         //This method should be check avability ini another class
-        long totalCalories = 0;
-        for (WeeklyNutrientProfile weeklyNutrientProfile : weeklyNutrientProfiles) {
-            totalCalories = totalCalories + weeklyNutrientProfile.getCalories();
-            System.out.println(totalCalories);
-        }
+        long totalCalories = weeklyNutrientProfiles.stream().map(p -> p.getCalories()).reduce(0L, Long::sum);
+        //int totalProtein = weeklyNutrientProfiles.stream().map(p -> p.getProtein()).reduce(0, Integer::sum); to calculate the other needs
+
+        System.out.println(totalCalories);
         
         //This class is the main method to run the program
 
