@@ -119,7 +119,7 @@ public class GUI{
         weeklyServiceHampers = (int)weeklyServiceNeeded.getValue();
 
  
-        FamilyProfile family = new FamilyProfile(employeeName, adultFemales, adultMales, childrenOver8Yrs, childrenUnder8Yrs, multipleHampers, weeklyServiceHampers);
+        FamilyProfile family = new FamilyProfile(adultFemales, adultMales, childrenOver8Yrs, childrenUnder8Yrs, multipleHampers, weeklyServiceHampers);
         // do actions to create hamper for them here too
 
 
