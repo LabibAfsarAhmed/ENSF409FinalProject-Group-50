@@ -24,11 +24,15 @@ public class Driver {
             weeklyNutrientProfiles.add(dao.calculateWeeklyFamilyCalories(familyProfile));
         }
 
+        //This method should be check avability ini another class
         long totalCalories = 0;
         for (WeeklyNutrientProfile weeklyNutrientProfile : weeklyNutrientProfiles) {
             totalCalories = totalCalories + weeklyNutrientProfile.getCalories();
             System.out.println(totalCalories);
         }
         
+        //This class is the main method to run the program
+
+        //Create hamper will receive nutrition profile and assign the food items according to the nutrition profile.
     }
 }
