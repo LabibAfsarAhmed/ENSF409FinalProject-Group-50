@@ -71,8 +71,8 @@ public class GUI {
             rightPanel.add(familyUnder8);
             rightPanel.add(childrenUnder8);
             rightPanel.add(checkbox);
-            //rightPanel.add(weeklyServiceLbl);
-            //rightPanel.add(weeklyServiceNeeded);
+            // rightPanel.add(weeklyServiceLbl);
+            // rightPanel.add(weeklyServiceNeeded);
 
             buttonPanel.add(doneSubmit);
             buttonPanel.add(doneSubmit);
