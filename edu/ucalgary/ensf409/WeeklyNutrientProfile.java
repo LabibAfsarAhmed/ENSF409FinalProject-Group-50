@@ -1,13 +1,13 @@
 package edu.ucalgary.ensf409;
 
-public class DailyNutrientProfile {
+public class WeeklyNutrientProfile {
     private long wholeGrains;
     private long fruitVeggies;
     private long protein;
     private long other;
     private long calories;
 
-    public DailyNutrientProfile(long wholeGrains,
+    public WeeklyNutrientProfile(long wholeGrains,
             long fruitVeggies,
             long protein,
             long other,
