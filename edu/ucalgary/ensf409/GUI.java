@@ -26,7 +26,7 @@ public class GUI {
     static int childrenOver8Yrs;
     static int childrenUnder8Yrs;
     static boolean weeklyServiceHampers;
-    static JTextField employeeIn = new JTextField("First name, last name");
+    static JTextField employeeIn = new JTextField("               ");
     static JSpinner AdultFemales = new JSpinner();
     static JSpinner AdultMales = new JSpinner();
     static JSpinner childrenOver8 = new JSpinner();

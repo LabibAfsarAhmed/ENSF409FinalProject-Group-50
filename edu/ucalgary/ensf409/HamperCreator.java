@@ -14,15 +14,15 @@ public class HamperCreator {
             ClientDailyNeedData.calculateWeeklyFamilyNeeds(familyProfile);
         }
 
-        long totalGrains = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getWholeGrain()).reduce(0L,
+        long totalGrains = familyProfiles.stream().map(f -> f.getDailyNutrientProfile().getWholeGrain()).reduce(0L,
                 Long::sum);
-        long totalFVContent = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getFruitVeggies())
+        long totalFVContent = familyProfiles.stream().map(f -> f.getDailyNutrientProfile().getFruitVeggies())
                 .reduce(0L, Long::sum);
-        long totalProtein = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getProtein()).reduce(0L,
+        long totalProtein = familyProfiles.stream().map(f -> f.getDailyNutrientProfile().getProtein()).reduce(0L,
                 Long::sum);
-        long totalOther = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getOther()).reduce(0L,
+        long totalOther = familyProfiles.stream().map(f -> f.getDailyNutrientProfile().getOther()).reduce(0L,
                 Long::sum);
-        long totalCalories = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getCalories()).reduce(0L,
+        long totalCalories = familyProfiles.stream().map(f -> f.getDailyNutrientProfile().getCalories()).reduce(0L,
                 Long::sum);
 
         if (totalGrains > InventoryData.getTotalGrain() || totalFVContent > InventoryData.getTotalFVContent() ||
@@ -41,7 +41,7 @@ public class HamperCreator {
 
         for (FamilyProfile familyProfile : familyProfiles) {
             List<FoodItem> items = pickMinimumItem(InventoryData.getFoodItems(),
-                    familyProfile.getWeeklyNutrientProfile());
+                    familyProfile.getDailyNutrientProfile());
 
             Hamper hamper = new Hamper(items);
             hampers.add(hamper);
@@ -50,7 +50,7 @@ public class HamperCreator {
         order.setCreatedHamper(hampers);
     }
 
-    private List<FoodItem> pickMinimumItem(List<FoodItem> items, WeeklyNutrientProfile nutrientProfile) {
+    private List<FoodItem> pickMinimumItem(List<FoodItem> items, DailyNutrientProfile nutrientProfile) {
         List<FoodItem> minGrainItems = new ArrayList<>();
         long neededGrains = nutrientProfile.getWholeGrain();
         long neededFV = nutrientProfile.getFruitVeggies();

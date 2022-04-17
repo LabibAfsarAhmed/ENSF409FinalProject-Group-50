@@ -26,13 +26,13 @@ public class ClientDailyNeedData {
     }
 
     public static FamilyProfile calculateWeeklyFamilyNeeds(FamilyProfile familyProfile) {
-        WeeklyNutrientProfile nutrientProfile = new WeeklyNutrientProfile(
+        DailyNutrientProfile nutrientProfile = new DailyNutrientProfile(
                 calculateWeeklyFamilyWholeGrains(familyProfile),
                 calculateWeeklyFamilyFruitVeggies(familyProfile),
                 calculateWeeklyFamilyProtein(familyProfile),
                 calculateWeeklyFamilyOther(familyProfile),
                 calculateWeeklyFamilyTotalCalories(familyProfile));
-        familyProfile.setWeeklyNutrientProfile(nutrientProfile);
+        familyProfile.setDailyNutrientProfile(nutrientProfile);
         return familyProfile;
     }
 
