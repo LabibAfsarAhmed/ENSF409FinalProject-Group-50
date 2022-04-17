@@ -8,7 +8,7 @@ public class ClientDailyNeedData {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "student",
-                    "ensf");
+                    "food_inventory");
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM `DAILY_CLIENT_NEEDS` WHERE ClientID = " + clientId);
@@ -23,7 +23,7 @@ public class ClientDailyNeedData {
         return dailyNeed;
     }                                               
 
-    public WeeklyNutrientProfile calculateWeeklyFamilyCalories(FamilyProfile familyProfile) {
+    public long calculateWeeklyFamilyWholeGrains(FamilyProfile familyProfile) {
         long wholeGrains = 0;
         if (familyProfile.getAdultMale() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);
@@ -44,6 +44,10 @@ public class ClientDailyNeedData {
                     + (childUnderDailyNeed.getWholeGrain() * 7 * familyProfile.getChildrenUnderEight());
         }
 
+        return wholeGrains;
+    }
+
+    public long calculateWeeklyFamilyFruitVeggies(FamilyProfile familyProfile) {
         long fruitVeggies = 0;
         if (familyProfile.getAdultMale() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);
@@ -64,6 +68,10 @@ public class ClientDailyNeedData {
                     + (childUnderDailyNeed.getFruitVeggies() * 7 * familyProfile.getChildrenUnderEight());
         }
 
+        return fruitVeggies;
+    }
+
+    public long calculateWeeklyFamilyProtein(FamilyProfile familyProfile) {
         long protein = 0;
         if (familyProfile.getAdultMale() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);
@@ -84,6 +92,10 @@ public class ClientDailyNeedData {
                     + (childUnderDailyNeed.getCalories() * 7 * familyProfile.getChildrenUnderEight());
         }
 
+        return protein;
+    }
+
+    public long calculateWeeklyFamilyWholeFruitVeggies(FamilyProfile familyProfile) {
         long other = 0;
         if (familyProfile.getAdultMale() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);
@@ -103,8 +115,12 @@ public class ClientDailyNeedData {
             other = other
                     + (childUnderDailyNeed.getOther() * 7 * familyProfile.getChildrenUnderEight());
         }
-
-        long totalCalories = 0;
+        
+        return other;
+    }
+    
+    public int calculateWeeklyFamilyTotalCalories(FamilyProfile familyProfile) {
+        int totalCalories = 0;
         if (familyProfile.getAdultMale() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);
             totalCalories = totalCalories + (maleDailyNeed.getCalories() * 7 * familyProfile.getAdultMale());
@@ -124,6 +140,7 @@ public class ClientDailyNeedData {
                     + (childUnderDailyNeed.getCalories() * 7 * familyProfile.getChildrenUnderEight());
         }
 
-        return new WeeklyNutrientProfile(wholeGrains, fruitVeggies, protein, other, totalCalories);
+        return totalCalories;
     }
+
 }
