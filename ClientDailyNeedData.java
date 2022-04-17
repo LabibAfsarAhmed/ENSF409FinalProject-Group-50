@@ -7,8 +7,8 @@ public class ClientDailyNeedData {
         DailyNeed dailyNeed = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "student",
-                    "food_inventory");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "root",
+                    "12345678");
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM `DAILY_CLIENT_NEEDS` WHERE ClientID = " + clientId);
@@ -24,7 +24,8 @@ public class ClientDailyNeedData {
     }
 
     public static FamilyProfile calculateWeeklyFamilyNeeds(FamilyProfile familyProfile) {
-        WeeklyNutrientProfile nutrientProfile = new WeeklyNutrientProfile(calculateWeeklyFamilyWholeGrains(familyProfile),
+        WeeklyNutrientProfile nutrientProfile = new WeeklyNutrientProfile(
+                calculateWeeklyFamilyWholeGrains(familyProfile),
                 calculateWeeklyFamilyFruitVeggies(familyProfile),
                 calculateWeeklyFamilyProtein(familyProfile),
                 calculateWeeklyFamilyOther(familyProfile),

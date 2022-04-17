@@ -10,4 +10,12 @@ public class Hamper {
     public List<FoodItem> getFoodItems() {
         return foodItems;
     }
+    
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (FoodItem item : foodItems) {
+            sb.append(item).append("\n");
+        }
+        return sb.toString();
+    }
 }

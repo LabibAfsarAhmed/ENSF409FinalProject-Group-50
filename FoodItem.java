@@ -45,4 +45,8 @@ public class FoodItem {
     public int getCalories() {
         return calories;
     }
+
+    public String toString() {
+        return id + " " + name;
+    }
 }

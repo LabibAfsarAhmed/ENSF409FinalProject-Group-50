@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,23 +15,30 @@ public class HamperCreator {
 
         long totalGrains = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getWholeGrain()).reduce(0L,
                 Long::sum);
-
-        long totalFVContent = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getFruitVeggies()).reduce(
-                0L,
-                Long::sum);
-
+        long totalFVContent = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getFruitVeggies())
+                .reduce(0L, Long::sum);
         long totalProtein = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getProtein()).reduce(0L,
                 Long::sum);
-
         long totalOther = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getOther()).reduce(0L,
                 Long::sum);
-
         long totalCalories = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getCalories()).reduce(0L,
                 Long::sum);
 
-        if (totalGrains < InventoryData.getTotalGrain() || totalFVContent < InventoryData.getTotalFVContent() ||
-                totalProtein < InventoryData.getTotalProContent() || totalOther < InventoryData.getTotalOther()
-                || totalCalories < InventoryData.getTotalCalories()) {
+        System.out.println("totalGrains:" + totalGrains);
+        System.out.println("totalFVContent:" + totalFVContent);
+        System.out.println("totalProtein:" + totalProtein);
+        System.out.println("totalOther:" + totalOther);
+        System.out.println("totalCalories:" + totalCalories);
+
+        System.out.println("totalGrains:" + InventoryData.getTotalGrain());
+        System.out.println("totalFVContent:" + InventoryData.getTotalFVContent());
+        System.out.println("totalProtein:" + InventoryData.getTotalProContent());
+        System.out.println("totalOther:" + InventoryData.getTotalOther());
+        System.out.println("totalCalories:" + InventoryData.getTotalCalories());
+
+        if (totalGrains > InventoryData.getTotalGrain() || totalFVContent > InventoryData.getTotalFVContent() ||
+                totalProtein > InventoryData.getTotalProContent() || totalOther > InventoryData.getTotalOther()
+                || totalCalories > InventoryData.getTotalCalories()) {
 
             throw new RuntimeException("Not enough stock!");
         }
@@ -79,6 +88,25 @@ public class HamperCreator {
             pickedItems.add(item);
             InventoryData.deleteFoodItem(item.getId());
             iterator.remove();
+        }
+
+        return pickedItems;
+    }
+
+    private List<FoodItem> pickMinimumItem2(List<FoodItem> items, WeeklyNutrientProfile nutrientProfile) {
+        Collections.sort(items, new Comparator<FoodItem>() {
+            @Override 
+            public int compare(FoodItem item1, FoodItem item2) {
+                return item1.getGrainContent() - item2.getGrainContent();
+            }
+        });
+        List<FoodItem> minGrainItems = new ArrayList<>();
+        long totalGrains = 0;
+        for (FoodItem item : items) {
+            totalGrains += item.getGrainContent();
+            if (totalGrains >= nutrientProfile.getWholeGrain()) {
+                break;
+            }
         }
 
         return pickedItems;

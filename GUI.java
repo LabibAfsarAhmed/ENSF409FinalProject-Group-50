@@ -49,7 +49,7 @@ public class GUI {
             JPanel rightPanel = new JPanel();
             JPanel titlePanel = new JPanel();
 
-            JButton submit = new JButton("Submit family");
+            JButton submit = new JButton("Add family");
             JButton doneSubmit = new JButton("Submit final order");
             JLabel instructions = new JLabel("Please enter the required information to produce a hamper order form.");
             JLabel employeeLabel = new JLabel("Please enter employee name:");
@@ -61,7 +61,7 @@ public class GUI {
             JLabel multipleHampersLbl = new JLabel("Please enter the number of hampers to configure");
             JLabel weeklyServiceLbl = new JLabel(
                     "If there are mobility concerns, please enter the number of hampers desired for weekly service");
-            JLabel numberOfFams = new JLabel("The number of families submitted: ");
+            JLabel numberOfFams = new JLabel("The number of families added: ");
 
             buttonPanel.add(submit);
             titlePanel.add(instructions);
@@ -125,6 +125,9 @@ public class GUI {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
 
+        // resetting families
+        requestedFamilies = new ArrayList<>();
+        numOfFams.setText("0");
     }
 
     private static void submitAction() {
@@ -143,14 +146,14 @@ public class GUI {
         requestedFamilies.add(family);
         // do actions to create hamper for them here too
 
-        System.out.println(employeeName);
-        System.out.println(families);
-        System.out.println(adultFemales);
-        System.out.println(adultMales);
-        System.out.println(childrenOver8Yrs);
-        System.out.println(childrenUnder8Yrs);
-        System.out.println(multipleHampers);
-        System.out.println(weeklyServiceHampers);
+        // System.out.println(employeeName);
+        // System.out.println(families);
+        // System.out.println(adultFemales);
+        // System.out.println(adultMales);
+        // System.out.println(childrenOver8Yrs);
+        // System.out.println(childrenUnder8Yrs);
+        // System.out.println(multipleHampers);
+        // System.out.println(weeklyServiceHampers);
 
         AdultFemales.setValue(0);
         AdultMales.setValue(0);

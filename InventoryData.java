@@ -7,8 +7,8 @@ public class InventoryData {
         List<FoodItem> items = new ArrayList<>();
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "student",
-                    "food_inventory");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "root",
+                    "12345678");
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM `AVAILABLE_FOOD`");
@@ -24,11 +24,11 @@ public class InventoryData {
     }
 
     public static void deleteFoodItem(int itemId) {
-        
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "student",
-                    "food_inventory");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "root",
+                    "12345678");
 
             Statement stmt = con.createStatement();
             stmt.executeUpdate("DELETE FROM `AVAILABLE_FOOD` WHERE ItemID = " + itemId);
@@ -42,8 +42,8 @@ public class InventoryData {
         long total = 0;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "student",
-                    "food_inventory");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "root",
+                    "12345678");
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT SUM(" + column + ") FROM `AVAILABLE_FOOD`");
