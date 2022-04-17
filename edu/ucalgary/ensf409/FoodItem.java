@@ -1,3 +1,5 @@
+package edu.ucalgary.ensf409;
+
 public class FoodItem {
     private int id;
     private String name;

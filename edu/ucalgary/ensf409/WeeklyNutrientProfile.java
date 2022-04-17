@@ -1,3 +1,5 @@
+package edu.ucalgary.ensf409;
+
 public class WeeklyNutrientProfile {
     private long wholeGrains;
     private long fruitVeggies;

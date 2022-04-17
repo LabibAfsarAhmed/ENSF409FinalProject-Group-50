@@ -1,5 +1,4 @@
-
-
+package edu.ucalgary.ensf409;
 
 public class FamilyProfile {
     private int adultFemales;

@@ -1,3 +1,5 @@
+package edu.ucalgary.ensf409;
+
 public class DailyNeed {
     private int id;
     private String clientType;

@@ -1,3 +1,5 @@
+package edu.ucalgary.ensf409;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -108,12 +110,12 @@ public class GUI {
         }
 
         Order order = new Order(employeeName, requestedFamilies);
-        System.out.println(order);
+
         try {
             HamperCreator hamperCreator = new HamperCreator(order);
             hamperCreator.buildHamper();
             JOptionPane.showMessageDialog(null, order);
-            System.out.println(order);
+            OrderForm orderForm = new OrderForm(order);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -156,7 +158,6 @@ public class GUI {
         AdultMales.setValue(0);
         childrenOver8.setValue(0);
         childrenUnder8.setValue(0);
-        multipleHamperSelect.setValue(0);
         numOfFams.setText(Integer.toString(families));
     }
 }
