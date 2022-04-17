@@ -1,18 +1,18 @@
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
 
     private String employeeName;
-    private LocalDateTime date;
+    private LocalDate date;
 
     private List<FamilyProfile> requestedFamilies;
     private List<Hamper> createdHampers;
 
     public Order(String employeeName, List<FamilyProfile> requestedFamilies) {
         this.employeeName = employeeName;
-        this.date = LocalDateTime.now();
+        this.date = LocalDate.now();
         this.requestedFamilies = requestedFamilies;
         this.createdHampers = new ArrayList<>();
     }
