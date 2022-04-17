@@ -2,32 +2,6 @@ import java.sql.*;
 
 public class ClientDailyNeedData {
 
-    /*
-     * public List<DailyNeed> getDailyNeeds() {
-     * List<DailyNeed> dailyNeeds = new ArrayList<>();
-     * 
-     * try {
-     * Class.forName("com.mysql.jdbc.Driver");
-     * Connection con =
-     * DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory",
-     * "student",
-     * "food_inventory");
-     * 
-     * Statement stmt = con.createStatement();
-     * ResultSet rs = stmt.executeQuery("SELECT * FROM daily_client_needs;");
-     * 
-     * while (rs.next())
-     * dailyNeeds.add(new DailyNeed(rs.getInt(1), rs.getString(2), rs.getInt(3),
-     * rs.getInt(4), rs.getInt(5),
-     * rs.getInt(6), rs.getInt(7)));
-     * con.close();
-     * } catch (Exception e) {
-     * System.out.println(e);
-     * }
-     * return dailyNeeds;
-     * }
-     */
-
     public static DailyNeed getDailyNeed(int clientId) {
 
         DailyNeed dailyNeed = null;
@@ -49,8 +23,87 @@ public class ClientDailyNeedData {
         return dailyNeed;
     }                                               
 
-    public static long calculateWeeklyFamilyCalories(FamilyProfile familyProfile) {
-        // InventoryDao dao = new InventoryDao();
+    public WeeklyNutrientProfile calculateWeeklyFamilyCalories(FamilyProfile familyProfile) {
+        long wholeGrains = 0;
+        if (familyProfile.getAdultMale() > 0) {
+            DailyNeed maleDailyNeed = getDailyNeed(1);
+            wholeGrains = wholeGrains + (maleDailyNeed.getWholeGrain() * 7 * familyProfile.getAdultMale());
+        }
+        if (familyProfile.getAdultFemale() > 0) {
+            DailyNeed femaleDailyNeed = getDailyNeed(2);
+            wholeGrains = wholeGrains + (femaleDailyNeed.getWholeGrain() * 7 * familyProfile.getAdultFemale());
+        }
+        if (familyProfile.getChildrenOverEight() > 0) {
+            DailyNeed childOverDailyNeed = getDailyNeed(3);
+            wholeGrains = wholeGrains
+                    + (childOverDailyNeed.getWholeGrain() * 7 * familyProfile.getChildrenOverEight());
+        }
+        if (familyProfile.getChildrenUnderEight() > 0) {
+            DailyNeed childUnderDailyNeed = getDailyNeed(4);
+            wholeGrains = wholeGrains
+                    + (childUnderDailyNeed.getWholeGrain() * 7 * familyProfile.getChildrenUnderEight());
+        }
+
+        long fruitVeggies = 0;
+        if (familyProfile.getAdultMale() > 0) {
+            DailyNeed maleDailyNeed = getDailyNeed(1);
+            fruitVeggies = fruitVeggies + (maleDailyNeed.getFruitVeggies() * 7 * familyProfile.getAdultMale());
+        }
+        if (familyProfile.getAdultFemale() > 0) {
+            DailyNeed femaleDailyNeed = getDailyNeed(2);
+            fruitVeggies = fruitVeggies + (femaleDailyNeed.getFruitVeggies() * 7 * familyProfile.getAdultFemale());
+        }
+        if (familyProfile.getChildrenOverEight() > 0) {
+            DailyNeed childOverDailyNeed = getDailyNeed(3);
+            fruitVeggies = fruitVeggies
+                    + (childOverDailyNeed.getFruitVeggies() * 7 * familyProfile.getChildrenOverEight());
+        }
+        if (familyProfile.getChildrenUnderEight() > 0) {
+            DailyNeed childUnderDailyNeed = getDailyNeed(4);
+            fruitVeggies = fruitVeggies
+                    + (childUnderDailyNeed.getFruitVeggies() * 7 * familyProfile.getChildrenUnderEight());
+        }
+
+        long protein = 0;
+        if (familyProfile.getAdultMale() > 0) {
+            DailyNeed maleDailyNeed = getDailyNeed(1);
+            protein = protein + (maleDailyNeed.getCalories() * 7 * familyProfile.getAdultMale());
+        }
+        if (familyProfile.getAdultFemale() > 0) {
+            DailyNeed femaleDailyNeed = getDailyNeed(2);
+            protein = protein + (femaleDailyNeed.getCalories() * 7 * familyProfile.getAdultFemale());
+        }
+        if (familyProfile.getChildrenOverEight() > 0) {
+            DailyNeed childOverDailyNeed = getDailyNeed(3);
+            protein = protein
+                    + (childOverDailyNeed.getCalories() * 7 * familyProfile.getChildrenOverEight());
+        }
+        if (familyProfile.getChildrenUnderEight() > 0) {
+            DailyNeed childUnderDailyNeed = getDailyNeed(4);
+            protein = protein
+                    + (childUnderDailyNeed.getCalories() * 7 * familyProfile.getChildrenUnderEight());
+        }
+
+        long other = 0;
+        if (familyProfile.getAdultMale() > 0) {
+            DailyNeed maleDailyNeed = getDailyNeed(1);
+            other = other + (maleDailyNeed.getOther() * 7 * familyProfile.getAdultMale());
+        }
+        if (familyProfile.getAdultFemale() > 0) {
+            DailyNeed femaleDailyNeed = getDailyNeed(2);
+            other = other + (femaleDailyNeed.getOther() * 7 * familyProfile.getAdultFemale());
+        }
+        if (familyProfile.getChildrenOverEight() > 0) {
+            DailyNeed childOverDailyNeed = getDailyNeed(3);
+            other = other
+                    + (childOverDailyNeed.getOther() * 7 * familyProfile.getChildrenOverEight());
+        }
+        if (familyProfile.getChildrenUnderEight() > 0) {
+            DailyNeed childUnderDailyNeed = getDailyNeed(4);
+            other = other
+                    + (childUnderDailyNeed.getOther() * 7 * familyProfile.getChildrenUnderEight());
+        }
+
         long totalCalories = 0;
         if (familyProfile.getAdultMale() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);
@@ -71,8 +124,6 @@ public class ClientDailyNeedData {
                     + (childUnderDailyNeed.getCalories() * 7 * familyProfile.getChildrenUnderEight());
         }
 
-        return totalCalories;
-
+        return new WeeklyNutrientProfile(wholeGrains, fruitVeggies, protein, other, totalCalories);
     }
-
 }
