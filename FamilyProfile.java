@@ -13,6 +13,7 @@ public class FamilyProfile {
         this.mobility = mobility;
     }
 
+
     public int getAdultMale() {
         return adultMale;
     }

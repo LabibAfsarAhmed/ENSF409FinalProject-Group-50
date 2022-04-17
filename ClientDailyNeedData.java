@@ -28,13 +28,13 @@ public class ClientDailyNeedData {
      * }
      */
 
-    public DailyNeed getDailyNeed(int clientId) {
+    public static DailyNeed getDailyNeed(int clientId) {
 
         DailyNeed dailyNeed = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "student",
-                    "food_inventory");
+                    "ensf");
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM `DAILY_CLIENT_NEEDS` WHERE ClientID = " + clientId);
@@ -49,7 +49,7 @@ public class ClientDailyNeedData {
         return dailyNeed;
     }
 
-    public WeeklyNutrientProfile calculateWeeklyFamilyCalories(FamilyProfile familyProfile) {
+    public static WeeklyNutrientProfile calculateWeeklyFamilyCalories(FamilyProfile familyProfile) {
         // InventoryDao dao = new InventoryDao();
         long totalCalories = 0;
         if (familyProfile.getAdultMale() > 0) {
