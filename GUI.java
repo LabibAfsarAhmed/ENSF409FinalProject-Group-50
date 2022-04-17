@@ -14,6 +14,8 @@ import java.awt.event.*;
 // * a place to request if one family wants multiple hampers configured
 // * finally a place to press enter on the GUI to submit the request for the order form
 
+// fix multiple hamper configuration
+
 public class GUI{
     static String employeeName = " ";
     static int families;
@@ -107,7 +109,7 @@ public class GUI{
 
     }
 
-    private static void submitAction() {
+    public static FamilyProfile submitAction() {
         // we will eventually store these in another class 
         families += 1;
         employeeName = employeeIn.getText();
@@ -115,22 +117,17 @@ public class GUI{
         adultMales = (int)AdultMales.getValue();
         childrenOver8Yrs = (int)childrenOver8.getValue();
         childrenUnder8Yrs = (int)childrenUnder8.getValue();
+        
         multipleHampers = (int)multipleHamperSelect.getValue();
         weeklyServiceHampers = (int)weeklyServiceNeeded.getValue();
 
+        
+
+        
+
  
-        FamilyProfile family = new FamilyProfile(adultFemales, adultMales, childrenOver8Yrs, childrenUnder8Yrs, multipleHampers, weeklyServiceHampers);
+        //FamilyProfile family = new FamilyProfile(adultFemales, adultMales, childrenOver8Yrs, childrenUnder8Yrs, multipleHampers, weeklyServiceHampers);
         // do actions to create hamper for them here too
-
-
-        System.out.println(employeeName);
-        System.out.println(families);
-        System.out.println(adultFemales);
-        System.out.println(adultMales);
-        System.out.println(childrenOver8Yrs);
-        System.out.println(childrenUnder8Yrs);
-        System.out.println(multipleHampers);
-        System.out.println(weeklyServiceHampers);
 
         AdultFemales.setValue(0);
         AdultMales.setValue(0);
@@ -139,6 +136,8 @@ public class GUI{
         multipleHamperSelect.setValue(0);
         weeklyServiceNeeded.setValue(0);
         numOfFams.setText(Integer.toString(families));
+
+       // return new FamilyProfile(adultMales, adultFemales, childrenUnder8Yrs, childrenOver8Yrs );
     }
 }
 
