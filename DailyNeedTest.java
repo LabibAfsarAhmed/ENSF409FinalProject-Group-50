@@ -8,8 +8,8 @@
  @since         1.0
  */
 
-//import static org.junit.Assert.*;
-//import org.junit.*;
+import static org.junit.Assert.*;
+import org.junit.*;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
