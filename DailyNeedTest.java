@@ -81,7 +81,7 @@ public class DailyNeedTest{
                 assertEquals("Method getProtein did not return the expected result: ", expectedValue, foundValue);
         }
         
-        // test method getWholeGrain()
+        // test method getOther()
         @Test
         public void testGetOther() {
                 DailyNeed dailyNeed = new DailyNeed(testId, testClientType, testWholeGrains,
