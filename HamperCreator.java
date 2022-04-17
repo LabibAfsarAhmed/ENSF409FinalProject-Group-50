@@ -40,7 +40,7 @@ public class HamperCreator {
         List<FamilyProfile> familyProfiles = order.getRequestedFamilies();
 
         for (FamilyProfile familyProfile : familyProfiles) {
-            List<FoodItem> items = pickMinimumItem(InventoryData.getFoodItems(),
+            List<FoodItem> items = pickMinimumItem2(InventoryData.getFoodItems(),
                     familyProfile.getWeeklyNutrientProfile());
 
             Hamper hamper = new Hamper(items);
@@ -75,7 +75,7 @@ public class HamperCreator {
             totalCalories = totalCalories + item.getCalories();
 
             pickedItems.add(item);
-            //InventoryData.deleteFoodItem(item.getId());
+            // InventoryData.deleteFoodItem(item.getId());
             iterator.remove();
         }
 
@@ -107,7 +107,7 @@ public class HamperCreator {
         }
 
         List<FoodItem> minFVItems = new ArrayList<>();
-        items.sort(Comparator.comparing(FoodItem::getFVContent));
+        items.sort(Comparator.comparing(FoodItem::getFVContent).reversed());
         long neededFruits = nutrientProfile.getFruitVeggies();
         for (FoodItem item : items) {
             if (neededFruits <= 0)
@@ -119,7 +119,7 @@ public class HamperCreator {
         }
 
         List<FoodItem> minProteinItems = new ArrayList<>();
-        items.sort(Comparator.comparing(FoodItem::getProContent));
+        items.sort(Comparator.comparing(FoodItem::getProContent).reversed());
         long neededProtein = nutrientProfile.getProtein();
         for (FoodItem item : items) {
             if (neededProtein <= 0)
@@ -131,7 +131,7 @@ public class HamperCreator {
         }
 
         List<FoodItem> minOtherItems = new ArrayList<>();
-        items.sort(Comparator.comparing(FoodItem::getOther));
+        items.sort(Comparator.comparing(FoodItem::getOther).reversed());
         long neededOther = nutrientProfile.getOther();
         for (FoodItem item : items) {
             if (neededOther <= 0)
@@ -142,9 +142,8 @@ public class HamperCreator {
             minOtherItems.add(item);
         }
 
-
         List<FoodItem> minCaloriesItems = new ArrayList<>();
-        items.sort(Comparator.comparing(FoodItem::getCalories));
+        items.sort(Comparator.comparing(FoodItem::getCalories).reversed());
         long neededCalories = nutrientProfile.getCalories();
         for (FoodItem item : items) {
             if (neededCalories <= 0)
@@ -154,7 +153,6 @@ public class HamperCreator {
             neededCalories -= item.getCalories();
             minCaloriesItems.add(item);
         }
-
 
         List<FoodItem> pickedItems = new ArrayList<>();
         pickedItems.addAll(minGrainItems);
@@ -166,7 +164,7 @@ public class HamperCreator {
         pickedItems = new ArrayList<>(new HashSet<>(pickedItems));
 
         pickedItems.sort(Comparator.comparing(FoodItem::getId));
-        //pickedItems.stream().map(i -> i.getId()).forEach(InventoryData::deleteFoodItem);
+        pickedItems.stream().map(i -> i.getId()).forEach(InventoryData::deleteFoodItem);
         items.removeAll(pickedItems);
 
         System.out.println("Expected Grain:" + nutrientProfile.getWholeGrain());
@@ -179,8 +177,6 @@ public class HamperCreator {
         System.out.println(pickedItems.stream().map(p -> p.getOther()).reduce(0, Integer::sum));
         System.out.println("Expected Calories:" + nutrientProfile.getCalories());
         System.out.println(pickedItems.stream().map(p -> p.getCalories()).reduce(0, Integer::sum));
-        
-        
 
         return pickedItems;
     }
