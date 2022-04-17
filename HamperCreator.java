@@ -94,21 +94,94 @@ public class HamperCreator {
     }
 
     private List<FoodItem> pickMinimumItem2(List<FoodItem> items, WeeklyNutrientProfile nutrientProfile) {
+        List<FoodItem> minGrainItems = new ArrayList<>();
         Collections.sort(items, new Comparator<FoodItem>() {
             @Override 
             public int compare(FoodItem item1, FoodItem item2) {
                 return item1.getGrainContent() - item2.getGrainContent();
             }
         });
-        List<FoodItem> minGrainItems = new ArrayList<>();
+
         long totalGrains = 0;
         for (FoodItem item : items) {
             totalGrains += item.getGrainContent();
+            minGrainItems.add(item);
             if (totalGrains >= nutrientProfile.getWholeGrain()) {
                 break;
             }
         }
 
-        return pickedItems;
+        List<FoodItem> minFVItems = new ArrayList<>();
+        Collections.sort(items, new Comparator<FoodItem>() {
+            @Override 
+            public int compare(FoodItem item1, FoodItem item2) {
+                return item1.getFVContent() - item2.getFVContent();
+            }
+        });
+
+        long totalFV = 0;
+        for (FoodItem item : items) {
+            totalFV += item.getFVContent();
+            minFVItems.add(item);
+            if (totalFV >= nutrientProfile.getFruitVeggies()) {
+                break;
+            }
+        }
+
+        List<FoodItem> minProteinItems = new ArrayList<>();
+        Collections.sort(items, new Comparator<FoodItem>() {
+            @Override 
+            public int compare(FoodItem item1, FoodItem item2) {
+                return item1.getProContent() - item2.getProContent();
+            }
+        });
+
+        long totalProtein = 0;
+        for (FoodItem item : items) {
+            totalProtein += item.getProContent();
+            minProteinItems.add(item);
+            if (totalProtein >= nutrientProfile.getProtein()) {
+                break;
+            }
+        }
+
+        List<FoodItem> minOtherItems = new ArrayList<>();
+        Collections.sort(items, new Comparator<FoodItem>() {
+            @Override 
+            public int compare(FoodItem item1, FoodItem item2) {
+                return item1.getOther() - item2.getOther();
+            }
+        });
+
+        long totalOther = 0;
+        for (FoodItem item : items) {
+            totalOther += item.getOther();
+            minOtherItems.add(item);
+            if (totalOther >= nutrientProfile.getOther()) {
+                break;
+            }
+        }
+
+        List<FoodItem> minCaloriesItems = new ArrayList<>();
+        Collections.sort(items, new Comparator<FoodItem>() {
+            @Override 
+            public int compare(FoodItem item1, FoodItem item2) {
+                return item1.getCalories() - item2.getCalories();
+            }
+        });
+
+        long totalCalories = 0;
+        for (FoodItem item : items) {
+            totalCalories += item.getCalories();
+            minCaloriesItems.add(item);
+            if (totalCalories >= nutrientProfile.getCalories()) {
+                break;
+            }
+        }
+
+
+        
+
+
     }
 }
