@@ -47,9 +47,9 @@ public class ClientDailyNeedData {
             System.out.println(e);
         }
         return dailyNeed;
-    }
+    }                                               
 
-    public static WeeklyNutrientProfile calculateWeeklyFamilyCalories(FamilyProfile familyProfile) {
+    public static long calculateWeeklyFamilyCalories(FamilyProfile familyProfile) {
         // InventoryDao dao = new InventoryDao();
         long totalCalories = 0;
         if (familyProfile.getAdultMale() > 0) {
@@ -71,7 +71,7 @@ public class ClientDailyNeedData {
                     + (childUnderDailyNeed.getCalories() * 7 * familyProfile.getChildrenUnderEight());
         }
 
-        return new WeeklyNutrientProfile(0, 0, 0, 0, totalCalories);
+        return totalCalories;
 
     }
 

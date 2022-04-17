@@ -35,7 +35,7 @@ public class Inventory {
     private int[] fruitsVeggies;
     private int[] otherContent;
     private int[] calories;
-    private int[][] inventoryArray;
+    int[][] inventoryArray;
     private int numberItemsInventory = 0;;
     // private int stock;
     // private String inputFile;
@@ -75,6 +75,10 @@ public class Inventory {
 
     // the following getters will use the nutrient class
 
+    public int[][] getInventoryArray(){
+        return inventoryArray;
+    }
+    
     public int[] getItemID(int row) {
         return this.ItemID;
     }
