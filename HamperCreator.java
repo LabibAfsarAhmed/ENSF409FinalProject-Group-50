@@ -50,37 +50,37 @@ public class HamperCreator {
         order.setCreatedHamper(hampers);
     }
 
-    private List<FoodItem> pickMinimumItem(List<FoodItem> items, WeeklyNutrientProfile nutrientProfile) {
-        int totalGrains = 0;
-        int totalFVContent = 0;
-        int totalProtein = 0;
-        int totalOther = 0;
-        int totalCalories = 0;
-        List<FoodItem> pickedItems = new ArrayList<>();
+    // private List<FoodItem> pickMinimumItem(List<FoodItem> items, WeeklyNutrientProfile nutrientProfile) {
+    //     int totalGrains = 0;
+    //     int totalFVContent = 0;
+    //     int totalProtein = 0;
+    //     int totalOther = 0;
+    //     int totalCalories = 0;
+    //     List<FoodItem> pickedItems = new ArrayList<>();
 
-        Iterator<FoodItem> iterator = items.iterator();
-        while (iterator.hasNext()) {
-            FoodItem item = iterator.next();
+    //     Iterator<FoodItem> iterator = items.iterator();
+    //     while (iterator.hasNext()) {
+    //         FoodItem item = iterator.next();
 
-            if (nutrientProfile.getWholeGrain() <= totalGrains && nutrientProfile.getFruitVeggies() <= totalFVContent
-                    && nutrientProfile.getProtein() <= totalProtein && nutrientProfile.getOther() <= totalOther
-                    && nutrientProfile.getCalories() <= totalCalories) {
-                break;
-            }
+    //         if (nutrientProfile.getWholeGrain() <= totalGrains && nutrientProfile.getFruitVeggies() <= totalFVContent
+    //                 && nutrientProfile.getProtein() <= totalProtein && nutrientProfile.getOther() <= totalOther
+    //                 && nutrientProfile.getCalories() <= totalCalories) {
+    //             break;
+    //         }
 
-            totalGrains = totalGrains + item.getGrainContent();
-            totalFVContent = totalFVContent + item.getFVContent();
-            totalProtein = totalProtein + item.getProContent();
-            totalOther = totalOther + item.getOther();
-            totalCalories = totalCalories + item.getCalories();
+    //         totalGrains = totalGrains + item.getGrainContent();
+    //         totalFVContent = totalFVContent + item.getFVContent();
+    //         totalProtein = totalProtein + item.getProContent();
+    //         totalOther = totalOther + item.getOther();
+    //         totalCalories = totalCalories + item.getCalories();
 
-            pickedItems.add(item);
-//            InventoryData.deleteFoodItem(item.getId());
-            iterator.remove();
-        }
+    //         pickedItems.add(item);
+    //         InventoryData.deleteFoodItem(item.getId());
+    //         iterator.remove();
+    //     }
 
-        return pickedItems;
-    }
+    //     return pickedItems;
+    // }
 
     private List<FoodItem> pickMinimumItem2(List<FoodItem> items, WeeklyNutrientProfile nutrientProfile) {
         List<FoodItem> minGrainItems = new ArrayList<>();
