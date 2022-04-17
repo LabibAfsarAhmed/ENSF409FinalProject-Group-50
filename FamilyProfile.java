@@ -6,16 +6,14 @@ public class FamilyProfile {
     private int adultMales;
     private int childrenUnder8;
     private int childrenOver8;
-    private int multipleHampers; 
     private int weeklyServiceHampers;
     private WeeklyNutrientProfile WeeklyNutrientProfile;
 
-    public FamilyProfile(int adultFemales, int adultMales, int childrenOver8, int childrenUnder8, int multipleHampers, boolean weeklyServiceHampers){
+    public FamilyProfile(int adultFemales, int adultMales, int childrenOver8, int childrenUnder8, boolean weeklyServiceHampers){
         this.adultFemales = adultFemales;
         this.adultMales = adultMales;
         this.childrenOver8 = childrenOver8;
         this.childrenUnder8 = childrenUnder8;
-        this.multipleHampers = multipleHampers;
     }
 
     public int getAdultFemales(){
@@ -32,10 +30,6 @@ public class FamilyProfile {
 
     public int getChildrenUnder8(){
         return this.childrenUnder8;
-    }
-
-    public int getMultipleHampers(){
-        return this.multipleHampers;
     }
 
     public int getWeeklyServiceHampers() {
