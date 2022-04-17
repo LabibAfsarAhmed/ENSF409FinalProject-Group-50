@@ -75,84 +75,96 @@ public class HamperCreator {
             totalCalories = totalCalories + item.getCalories();
 
             pickedItems.add(item);
-            // InventoryData.deleteFoodItem(item.getId());
+//            InventoryData.deleteFoodItem(item.getId());
             iterator.remove();
         }
-
-        System.out.println("Expected Grain:" + nutrientProfile.getWholeGrain());
-        System.out.println(pickedItems.stream().map(p -> p.getGrainContent()).reduce(0, Integer::sum));
-        System.out.println("Expected FV:" + nutrientProfile.getFruitVeggies());
-        System.out.println(pickedItems.stream().map(p -> p.getFVContent()).reduce(0, Integer::sum));
-        System.out.println("Expected Protein:" + nutrientProfile.getProtein());
-        System.out.println(pickedItems.stream().map(p -> p.getProContent()).reduce(0, Integer::sum));
-        System.out.println("Expected Other:" + nutrientProfile.getOther());
-        System.out.println(pickedItems.stream().map(p -> p.getOther()).reduce(0, Integer::sum));
-        System.out.println("Expected Calories:" + nutrientProfile.getCalories());
-        System.out.println(pickedItems.stream().map(p -> p.getCalories()).reduce(0, Integer::sum));
 
         return pickedItems;
     }
 
     private List<FoodItem> pickMinimumItem2(List<FoodItem> items, WeeklyNutrientProfile nutrientProfile) {
         List<FoodItem> minGrainItems = new ArrayList<>();
-        items.sort(Comparator.comparing(FoodItem::getGrainContent).reversed());
         long neededGrains = nutrientProfile.getWholeGrain();
+        long neededFV = nutrientProfile.getFruitVeggies();
+        long neededProtein = nutrientProfile.getProtein();
+        long neededOther = nutrientProfile.getOther();
+        long neededCalories = nutrientProfile.getCalories();
+
+        items.sort(Comparator.comparing(FoodItem::getGrainContent).reversed());
         for (FoodItem item : items) {
             if (neededGrains <= 0)
                 break;
             if (item.getGrainContent() == 0 || item.getGrainContent() > neededGrains)
                 continue;
             neededGrains -= item.getGrainContent();
+            neededFV -= item.getFVContent();
+            neededProtein -= item.getProContent();
+            neededOther -= item.getOther();
+            neededCalories -= item.getCalories();
             minGrainItems.add(item);
         }
 
         List<FoodItem> minFVItems = new ArrayList<>();
         items.sort(Comparator.comparing(FoodItem::getFVContent).reversed());
-        long neededFruits = nutrientProfile.getFruitVeggies();
         for (FoodItem item : items) {
-            if (neededFruits <= 0)
+            if (neededFV <= 0)
                 break;
-            if (item.getFVContent() == 0 || item.getFVContent() > neededFruits)
+            if (item.getFVContent() == 0 || item.getFVContent() > neededFV)
                 continue;
-            neededFruits -= item.getFVContent();
+            neededGrains -= item.getGrainContent();
+            neededFV -= item.getFVContent();
+            neededProtein -= item.getProContent();
+            neededOther -= item.getOther();
+            neededCalories -= item.getCalories();
             minFVItems.add(item);
         }
 
         List<FoodItem> minProteinItems = new ArrayList<>();
         items.sort(Comparator.comparing(FoodItem::getProContent).reversed());
-        long neededProtein = nutrientProfile.getProtein();
         for (FoodItem item : items) {
             if (neededProtein <= 0)
                 break;
             if (item.getProContent() == 0 || item.getProContent() > neededProtein)
                 continue;
+            neededGrains -= item.getGrainContent();
+            neededFV -= item.getFVContent();
             neededProtein -= item.getProContent();
+            neededOther -= item.getOther();
+            neededCalories -= item.getCalories();
             minProteinItems.add(item);
         }
 
         List<FoodItem> minOtherItems = new ArrayList<>();
         items.sort(Comparator.comparing(FoodItem::getOther).reversed());
-        long neededOther = nutrientProfile.getOther();
         for (FoodItem item : items) {
             if (neededOther <= 0)
                 break;
             if (item.getOther() == 0 || item.getOther() > neededOther)
                 continue;
+            neededGrains -= item.getGrainContent();
+            neededFV -= item.getFVContent();
+            neededProtein -= item.getProContent();
             neededOther -= item.getOther();
+            neededCalories -= item.getCalories();
             minOtherItems.add(item);
         }
 
+
         List<FoodItem> minCaloriesItems = new ArrayList<>();
         items.sort(Comparator.comparing(FoodItem::getCalories).reversed());
-        long neededCalories = nutrientProfile.getCalories();
         for (FoodItem item : items) {
             if (neededCalories <= 0)
                 break;
             if (item.getCalories() == 0 || item.getCalories() > neededCalories)
                 continue;
+            neededGrains -= item.getGrainContent();
+            neededFV -= item.getFVContent();
+            neededProtein -= item.getProContent();
+            neededOther -= item.getOther();
             neededCalories -= item.getCalories();
             minCaloriesItems.add(item);
         }
+
 
         List<FoodItem> pickedItems = new ArrayList<>();
         pickedItems.addAll(minGrainItems);
@@ -162,21 +174,20 @@ public class HamperCreator {
         pickedItems.addAll(minCaloriesItems);
 
         pickedItems = new ArrayList<>(new HashSet<>(pickedItems));
-
         pickedItems.sort(Comparator.comparing(FoodItem::getId));
         pickedItems.stream().map(i -> i.getId()).forEach(InventoryData::deleteFoodItem);
         items.removeAll(pickedItems);
 
-        System.out.println("Expected Grain:" + nutrientProfile.getWholeGrain());
-        System.out.println(minGrainItems.stream().map(p -> p.getGrainContent()).reduce(0, Integer::sum));
-        System.out.println("Expected FV:" + nutrientProfile.getFruitVeggies());
-        System.out.println(pickedItems.stream().map(p -> p.getFVContent()).reduce(0, Integer::sum));
-        System.out.println("Expected Protein:" + nutrientProfile.getProtein());
-        System.out.println(pickedItems.stream().map(p -> p.getProContent()).reduce(0, Integer::sum));
-        System.out.println("Expected Other:" + nutrientProfile.getOther());
-        System.out.println(pickedItems.stream().map(p -> p.getOther()).reduce(0, Integer::sum));
-        System.out.println("Expected Calories:" + nutrientProfile.getCalories());
-        System.out.println(pickedItems.stream().map(p -> p.getCalories()).reduce(0, Integer::sum));
+        // System.out.println("Expected Grains: " + nutrientProfile.getWholeGrain());
+        // System.out.println(pickedItems.stream().map(FoodItem::getGrainContent).reduce(0, Integer::sum));
+        // System.out.println("Expected Fruits: " + nutrientProfile.getFruitVeggies());
+        // System.out.println(pickedItems.stream().map(FoodItem::getFVContent).reduce(0, Integer::sum));
+        // System.out.println("Expected Protein: " + nutrientProfile.getProtein());
+        // System.out.println(pickedItems.stream().map(FoodItem::getProContent).reduce(0, Integer::sum));
+        // System.out.println("Expected Other: " + nutrientProfile.getOther());
+        // System.out.println(pickedItems.stream().map(FoodItem::getOther).reduce(0, Integer::sum));
+        // System.out.println("Expected Calories: " + nutrientProfile.getCalories());
+        // System.out.println(pickedItems.stream().map(FoodItem::getCalories).reduce(0, Integer::sum));
 
         return pickedItems;
     }
