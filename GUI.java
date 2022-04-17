@@ -24,15 +24,16 @@ public class GUI {
     static int childrenOver8Yrs;
     static int childrenUnder8Yrs;
     static int multipleHampers;
-    static int weeklyServiceHampers;
+    static boolean weeklyServiceHampers;
     static JTextField employeeIn = new JTextField("First name, last name");
     // static JSpinner familyNum = new JSpinner();
     static JSpinner AdultFemales = new JSpinner();
     static JSpinner AdultMales = new JSpinner();
     static JSpinner childrenOver8 = new JSpinner();
     static JSpinner childrenUnder8 = new JSpinner();
+    static JCheckBox checkbox = new JCheckBox("Weekly service required?");
     static JSpinner multipleHamperSelect = new JSpinner();
-    static JSpinner weeklyServiceNeeded = new JSpinner();
+    //static JSpinner weeklyServiceNeeded = new JSpinner();
     static JTextField numOfFams = new JTextField("  ");
 
     public static void main(String args[]) {
@@ -57,9 +58,10 @@ public class GUI {
             JLabel familyMales = new JLabel("Please enter the number of adult males in family:");
             JLabel familyOver8 = new JLabel("Please enter the number of children over 8 in family");
             JLabel familyUnder8 = new JLabel("Please enter the number of children under 8 in family");
+           
             JLabel multipleHampersLbl = new JLabel("Please enter the number of hampers to configure");
-            JLabel weeklyServiceLbl = new JLabel(
-                    "If there are mobility concerns, please enter the number of hampers desired for weekly service");
+            //JLabel weeklyServiceLbl = new JLabel(
+                    //"If there are mobility concerns, please enter the number of hampers desired for weekly service");
             JLabel numberOfFams = new JLabel("The number of families added: ");
 
             buttonPanel.add(submit);
@@ -74,10 +76,11 @@ public class GUI {
             rightPanel.add(childrenOver8);
             rightPanel.add(familyUnder8);
             rightPanel.add(childrenUnder8);
+            rightPanel.add(checkbox);
             rightPanel.add(multipleHampersLbl);
             rightPanel.add(multipleHamperSelect);
-            rightPanel.add(weeklyServiceLbl);
-            rightPanel.add(weeklyServiceNeeded);
+            //rightPanel.add(weeklyServiceLbl);
+            //rightPanel.add(weeklyServiceNeeded);
 
             buttonPanel.add(doneSubmit);
             buttonPanel.add(doneSubmit);
@@ -119,6 +122,7 @@ public class GUI {
         try {
             HamperCreator hamperCreator = new HamperCreator(order);
             hamperCreator.buildHamper();
+            JOptionPane.showMessageDialog(null, order);
             System.out.println(order);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -138,7 +142,13 @@ public class GUI {
         childrenOver8Yrs = (int) childrenOver8.getValue();
         childrenUnder8Yrs = (int) childrenUnder8.getValue();
         multipleHampers = (int) multipleHamperSelect.getValue();
-        weeklyServiceHampers = (int) weeklyServiceNeeded.getValue();
+        if(checkbox.isSelected()){
+            weeklyServiceHampers = true;
+        }else{
+            weeklyServiceHampers = false;
+        }
+        
+        //weeklyServiceHampers = (int) weeklyServiceNeeded.getValue();
 
         FamilyProfile family = new FamilyProfile(adultFemales, adultMales, childrenOver8Yrs, childrenUnder8Yrs,
                 multipleHampers, weeklyServiceHampers);
@@ -159,7 +169,6 @@ public class GUI {
         childrenOver8.setValue(0);
         childrenUnder8.setValue(0);
         multipleHamperSelect.setValue(0);
-        weeklyServiceNeeded.setValue(0);
         numOfFams.setText(Integer.toString(families));
     }
 }

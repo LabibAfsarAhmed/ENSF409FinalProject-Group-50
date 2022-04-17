@@ -6,11 +6,11 @@ public class FamilyProfile {
     private int adultMales;
     private int childrenUnder8;
     private int childrenOver8;
-    private int multipleHampers;
+    private int multipleHampers; 
     private int weeklyServiceHampers;
     private WeeklyNutrientProfile WeeklyNutrientProfile;
 
-    public FamilyProfile(int adultFemales, int adultMales, int childrenOver8, int childrenUnder8, int multipleHampers, int weeklyServiceHampers){
+    public FamilyProfile(int adultFemales, int adultMales, int childrenOver8, int childrenUnder8, int multipleHampers, boolean weeklyServiceHampers){
         this.adultFemales = adultFemales;
         this.adultMales = adultMales;
         this.childrenOver8 = childrenOver8;
