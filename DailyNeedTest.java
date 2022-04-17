@@ -19,5 +19,11 @@ import java.sql.SQLException;
 import java.util.*;
 public class DailyNeedTest{
 
+        private static String USERNAME = "student";
+        private static String PASSWORD = "ensf";
 
+        @Test
+        public void getID(){
+               
+        }
 }
