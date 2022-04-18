@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class ClientDailyNeedData {
 
-    private static DailyNeed getDailyNeed(int clientId) {
+    public static DailyNeed getDailyNeed(int clientId) {
 
         DailyNeed dailyNeed = null;
         try {
