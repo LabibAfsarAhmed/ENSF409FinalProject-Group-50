@@ -14,7 +14,33 @@
 
 import static org.junit.Assert.*;
 import org.junit.*;
+import java.util.*;
 
 public class HamperCreatorTest{
+    List<FamilyProfile> requestedFamilies = new ArrayList<FamilyProfile>();
+    List<Hamper> initializeHampers = new ArrayList<Hamper>();
+    List<FoodItem> sampleFood = new ArrayList<FoodItem>();
+    String testEmployee = "Sam";
+    List<FamilyProfile> expectedFamilies = createSampleFamilies(requestedFamilies);
+    Order order = new Order(testEmployee,expectedFamilies);
     
+
+    // this initlializes the sample list of requested families
+    public List<FamilyProfile> createSampleFamilies(List<FamilyProfile> requestedFamilies) {
+        FamilyProfile family1 = new FamilyProfile(1, 1, 1, 4, true);
+        FamilyProfile family2 = new FamilyProfile(2, 1, 3, 0, false);
+        requestedFamilies.add(family1);
+        requestedFamilies.add(family2);
+        return requestedFamilies;
+    }
+
+
+
+    //test constructor
+    @Test
+    public void testHamperCreator(){
+        HamperCreator testCreator = new HamperCreator(order);
+        assertNotNull("HamperConstructor did not create an object when given valid arguments.",
+                testCreator);
+    }
 }
