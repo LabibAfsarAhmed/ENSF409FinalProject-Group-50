@@ -1,3 +1,4 @@
+package edu.ucalgary.ensf409;
 
 /**
  @author Jannine Osman <a href="mailto:jannine.osman@ucalgary.ca">jannine.osman@ucalgary.ca</a>

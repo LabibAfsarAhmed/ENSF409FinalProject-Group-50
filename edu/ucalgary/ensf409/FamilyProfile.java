@@ -13,7 +13,7 @@ public class FamilyProfile {
     private int adultMales;
     private int childrenUnder8;
     private int childrenOver8;
-    private int weeklyServiceHampers;
+    private boolean weeklyServiceHampers;
     private WeeklyNutrientProfile weeklyNutrientProfile;
 
     /**
@@ -73,7 +73,7 @@ public class FamilyProfile {
      * @return an integer value for weeklyServiceHampers
      */
 
-    public int getWeeklyServiceHampers() {
+    public boolean getWeeklyServiceHampers() {
         return this.weeklyServiceHampers;
     }
     
