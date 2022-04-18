@@ -53,7 +53,11 @@ public class DailyNeedTest{
                assertEquals("Method getId did not return the expected result: ", expectedValue, foundValue);
         }
         
-        // test method getClientType()
+         /**
+         * test method getClientType()
+         * getClientType should return the correct type of family member when called properly
+         * test passes when the expected member is found, and testing to see if it matches with the family member in the database
+         */
         @Test
         public void testClientType() {
                 DailyNeed dailyNeed = new DailyNeed(testId, testClientType, testWholeGrains,
@@ -63,7 +67,11 @@ public class DailyNeedTest{
                 assertEquals("Method getClientType did not return the expected result: ", expectedValue, foundValue);
         }
         
-        // test method getWholeGrain()
+         /**
+         * test method getWholeGrain()
+         * getWholeGrain should return the correct type of family member when called properly
+         * test passes when the expected whole grain is found, and testing to see if it matches with the whole grain in the database
+         */
         @Test
         public void testGetWholeGrain() {
                 DailyNeed dailyNeed = new DailyNeed(testId, testClientType, testWholeGrains,
@@ -73,7 +81,11 @@ public class DailyNeedTest{
                 assertEquals("Method getWholeGrain did not return the expected result: ", expectedValue, foundValue);
         }
         
-        // test method getFruitsVeggies()
+         /**
+         * test method getFruitsVeggies()
+         * getFruitsVeggies should return the correct type of family member when called properly
+         * test passes when the expected fruits and vegetable is found, and testing to see if it matches with the fruits and vegetable in the database
+         */
         @Test
         public void testGetFruitsVeggies() {
                 DailyNeed dailyNeed = new DailyNeed(testId, testClientType, testWholeGrains,
@@ -83,7 +95,11 @@ public class DailyNeedTest{
                 assertEquals("Method getFruitsVeggies did not return the expected result: ", expectedValue, foundValue);
         }
 
-        // test method getProtein()
+         /**
+         * test method getProtein()
+         * getProtein should return the correct type of family member when called properly
+         * test passes when the expected protein is found, and testing to see if it matches with the protein in the database
+         */
         @Test
         public void testGetProtein() {
                 DailyNeed dailyNeed = new DailyNeed(testId, testClientType, testWholeGrains,
@@ -93,7 +109,11 @@ public class DailyNeedTest{
                 assertEquals("Method getProtein did not return the expected result: ", expectedValue, foundValue);
         }
         
-        // test method getOther()
+         /**
+         * test method getOther()
+         * getOther should return the correct type of family member when called properly
+         * test passes when the expected other food item is found, and testing to see if it matches with the other in the database
+         */
         @Test
         public void testGetOther() {
                 DailyNeed dailyNeed = new DailyNeed(testId, testClientType, testWholeGrains,
@@ -103,7 +123,11 @@ public class DailyNeedTest{
                 assertEquals("Method getOther did not return the expected result: ", expectedValue, foundValue);
         }
         
-        // test method getCalories()
+        /**
+         * test method getCalories()
+         * getCalories() should return the correct type of family member when called properly
+         * test passes when the expected calorie content is found, and testing to see if it matches with the calories in the database
+         */
         @Test
         public void testGetCalories() {
                 DailyNeed dailyNeed = new DailyNeed(testId, testClientType, testWholeGrains,
@@ -113,7 +137,10 @@ public class DailyNeedTest{
                 assertEquals("Method getCalories did not return the expected result: ", expectedValue, foundValue);
         }
 
-        //test method toString()
+         /**
+         * test method toString()
+         * this method tests if a string is correctly created
+         */
         @Test
         public void testToString(){
                 StringBuilder sb = new StringBuilder();

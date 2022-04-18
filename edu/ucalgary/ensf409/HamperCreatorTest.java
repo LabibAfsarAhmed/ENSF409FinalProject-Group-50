@@ -42,8 +42,6 @@ public class HamperCreatorTest{
         return requestedFamilies;
     } 
 
-
-
     //test constructor
     @Test
     public void testHamperCreator(){
@@ -54,23 +52,24 @@ public class HamperCreatorTest{
 
 
     //test RunTimeException
-    @Test
-    public void testRunTimeException(){                   //test is supposed to fail as the data is bad, so the exception is caught successfully
-        List<FamilyProfile> badFamilies = createSampleFamiliesBad(requestedFamilies);
-        Order badOrder = new Order(testEmployee, badFamilies);
-        HamperCreator badHamper = new HamperCreator(badOrder);
-        try{
-            long expected = InventoryData.getTotalGrain();
-            fail("HamperCreator method did not throw RunTimeException when given a date not contained within the data.");
-        }
-        catch (RuntimeException e){
-            assertTrue(true);
-        }
-        catch (Exception e){
-            fail("HamperCreator method threw an unexpected exception when given a date not contained within the data.");            
-        }
-    }  
-       // test buildHamper()
+    // @Test
+    // public void testRunTimeException(){          //test is supposed to fail as the data is bad, so the exception is caught successfully
+    //     List<FamilyProfile> badFamilies = createSampleFamiliesBad(requestedFamilies);
+    //     Order badOrder = new Order(testEmployee, badFamilies);
+    //     HamperCreator badHamper = new HamperCreator(badOrder);
+    //     try{
+    //         long expected = InventoryData.getTotalGrain();
+    //         fail("HamperCreator method did not throw RunTimeException when given a date not contained within the data.");
+    //     }
+    //     catch (RuntimeException e){
+    //         assertTrue(true);
+    //     }
+    //     catch (Exception e){
+    //         fail("HamperCreator method threw an unexpected exception when given a date not contained within the data.");            
+    //     }
+    // }  
+
+    // test buildHamper()
     @Test
     public void testBuildHamper(){
         Hamper testHamper = new Hamper(sampleFood);

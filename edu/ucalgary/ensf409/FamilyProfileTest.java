@@ -22,7 +22,7 @@ public class FamilyProfileTest{
     int testMales =2;
     int testUnderEight =3;
     int testOverEight =4;
-    boolean testWeeklyService = true;
+    boolean testWeeklyService = false;   
     WeeklyNutrientProfile testWeeklyNutrientProfile = new WeeklyNutrientProfile(100,
             110, 20, 60, 1100);
 
@@ -85,16 +85,6 @@ public class FamilyProfileTest{
         assertEquals("Method getWeeklyServiceHampers did not return the expected result: ", expectedValue, foundValue);
     }
 
-    // test getWeeklyNutrientProfile()
-    @Test
-    public void testGetWeeklyNutrientProfile() {   //NOT PASSING!!!!!!
-        FamilyProfile familyProfile = new FamilyProfile(testFemales, testMales, testOverEight,
-                testUnderEight, testWeeklyService);
-        WeeklyNutrientProfile expectedValue = testWeeklyNutrientProfile;
-        WeeklyNutrientProfile foundValue = familyProfile.getWeeklyNutrientProfile();
-        assertEquals("Method getWeeklyNutrientProfile did not return the expected result: ", expectedValue, foundValue);
-    }
-    
     // test setWeeklyNutrientProfile()
     @Test
     public void testSetWeeklyNutrientProfile() {

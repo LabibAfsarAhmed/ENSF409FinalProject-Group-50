@@ -39,7 +39,7 @@ public class OrderForm {
             File output = new File("orderform.txt");  //create a file with the name orderform.txt
             FileWriter write = new FileWriter(output);         //write a new file 
             BufferedWriter buffer = new BufferedWriter(write); //create a new BufferWriter
-            buffer.write(order.toString()); 
+            buffer.write(order.toString());                   //ensure text is in string format
             buffer.flush();                                   //to restart a new .txt file everytime the algorithm is run
             buffer.close();                                   //to close the file
         } catch (FileNotFoundException ex) {
