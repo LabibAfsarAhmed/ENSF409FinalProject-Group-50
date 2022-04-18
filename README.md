@@ -18,9 +18,10 @@ The Unit tests have been designed to work with the original given database (inve
 ## To Run on Windows
 
 Assuming in the working directory
-'''
-javac -cp .;lib/mysql-connector-java-8.0.23.jar;. edu/ucalgary/ensf409/\*.java
-'''
+
+```
+javac -cp .;lib/mysql-connector-java-8.0.23.jar;. edu/ucalgary/ensf409/*.java
+```
 
 ## To Run on Windows
 
@@ -30,7 +31,7 @@ Assuming in working directory
 java -cp .;lib/mysql-connector-java-8.0.23.jar;. edu/ucalgary/ensf409/GUI
 ```
 
-## To Compile Tests on Window
+## To Compile Tests on Windows
 
 Assuming in working directory
 
