@@ -1,12 +1,11 @@
 
-
 public class FamilyProfile {
     private int adultFemales;
     private int adultMales;
     private int childrenUnder8;
     private int childrenOver8;
     private boolean weeklyServiceHampers;
-    private WeeklyNutrientProfile WeeklyNutrientProfile;
+    private WeeklyNutrientProfile weeklyNutrientProfile;
 
     public FamilyProfile(int adultFemales, int adultMales, int childrenOver8, int childrenUnder8,
             boolean weeklyServiceHampers) {
@@ -38,11 +37,11 @@ public class FamilyProfile {
     }
 
     public WeeklyNutrientProfile getWeeklyNutrientProfile() {
-        return this.WeeklyNutrientProfile;
+        return this.weeklyNutrientProfile;
     }
 
     public void setWeeklyNutrientProfile(WeeklyNutrientProfile weeklyNutrientProfile) {
-        this.WeeklyNutrientProfile = weeklyNutrientProfile;
+        this.weeklyNutrientProfile = weeklyNutrientProfile;
     }
 
     public String toString() {
