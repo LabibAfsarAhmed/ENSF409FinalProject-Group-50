@@ -95,11 +95,19 @@ public class OrderTest {
 
     //test getCreatedHampers()
     @Test
-    public void testGetCreatedHampers(){
+    public void testGetCreatedHampers(){       //NOT PASSING!!
         Order orderTest = new Order(testEmployee, expectedFamilies);
         List<Hamper> expected = testHampers;
         List<Hamper> found = orderTest.getCreatedHampers();
         assertEquals("Method getCreatedHampers did not return the expected result: ", expected, found);
 
+    }
+    
+    // test method toString()
+    @Test
+    public void testToString() {
+        StringBuilder sb = new StringBuilder();
+        assertNotNull("StringBuilder did not create a string.",
+                sb);
     }
 }

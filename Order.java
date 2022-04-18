@@ -22,7 +22,7 @@ public class Order {
     }
 
     public List<Hamper> getCreatedHampers() {
-        return createdHampers;
+        return this.createdHampers;
     }
 
     public void setCreatedHamper(List<Hamper> createdHampers) {
