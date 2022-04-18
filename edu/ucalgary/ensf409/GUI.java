@@ -1,3 +1,11 @@
+/**
+ @author Jannine Osman <a href="mailto:jannine.osman@ucalgary.ca">jannine.osman@ucalgary.ca</a>
+         Sukriti Sharma <a href="mailto:sukriti.sharma@ucalgary.ca">sukriti.sharma@ucalgary.ca</a>
+         Caroline Basta <a href="mailto:caroline.basta1@ucalgary.ca">caroline.basta1@ucalgary.ca</a>
+         Labib Afsar Ahmed <a href="mailto:labibafsar.ahmed@ucalgary.ca">labibafsar.ahmed@ucalgary.ca</a>
+ @version       1.8
+ @since         1.0
+ */
 package edu.ucalgary.ensf409;
 
 // ENSF 409 W22 Group 50 final project 
@@ -162,7 +170,7 @@ public class GUI{
         childrenUnder8Yrs = (int) childrenUnder8.getValue();
         if(checkbox.isSelected()){
             weeklyServiceHampers = true;
-        }else{
+        } else {
             weeklyServiceHampers = false;
         }
         if(adultFemales < 0 || adultMales < 0 || childrenOver8Yrs < 0 || childrenUnder8Yrs < 0){

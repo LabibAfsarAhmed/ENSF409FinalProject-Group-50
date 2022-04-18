@@ -1,5 +1,13 @@
-package edu.ucalgary.ensf409;
+/**
+ @author Jannine Osman <a href="mailto:jannine.osman@ucalgary.ca">jannine.osman@ucalgary.ca</a>
+           Sukriti Sharma <a href="mailto:sukriti.sharma@ucalgary.ca">sukriti.sharma@ucalgary.ca</a>
+           Caroline Basta <a href="mailto:caroline.basta1@ucalgary.ca">caroline.basta1@ucalgary.ca</a>
+           Labib Afsar Ahmed <a href="mailto:labibafsar.ahmed@ucalgary.ca">labibafsar.ahmed@ucalgary.ca</a>
+ @version       1.2
+ @since         1.0
+ */
 
+package edu.ucalgary.ensf409;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,24 +18,35 @@ public class OrderForm {
 
     private Order order;
 
+    /**
+     * constructor for OrderForm class 
+     * creates order that is being printed into the output text file
+     * calls outputText() to create the order
+     * @param order object order is retrieved from Order class
+     */
     public OrderForm(Order order) {
         this.order = order;
-        outputToText();
+        outputText();
     }
 
-    public void outputToText() {
+    /** 
+     * method outputText to print the hamper created into a .txt file
+     * @throws FileNotFoundException when file can't be opened
+     * @throw IOException when output file can't be written - error in the IO
+     */
+    public void outputText() {
         try {
-            File obj = new File("orderform.txt"); //creates a new File called orderform.txt
-            FileWriter fw = new FileWriter(obj);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(order.toString()); // writes the order string to the orderform file
-            bw.flush();
-            bw.close();
-        } catch (FileNotFoundException ex) { // throws exception if it is unable to open the orderform file
-            System.out.print("unable to open file");
+            File output = new File("orderform.txt");  //create a file with the name orderform.txt
+            FileWriter write = new FileWriter(output);         //write a new file 
+            BufferedWriter buffer = new BufferedWriter(write); //create a new BufferWriter
+            buffer.write(order.toString()); 
+            buffer.flush();                                   //to restart a new .txt file everytime the algorithm is run
+            buffer.close();                                   //to close the file
+        } catch (FileNotFoundException ex) {
+            System.out.print("Error: file couldn't be opened.");
 
-        } catch (IOException ex) { // throws error if it is unable to write to orderform.txt
-            System.out.print("error writing to file");
+        } catch (IOException ex) {
+            System.out.print("Error: file couldn't be written.");
         }
     }
 }
