@@ -70,10 +70,10 @@ public class ClientDailyNeedDataTest{
     }
 
     //test calculateWeeklyFamilyFruitVeggies()
-    @Test
+ /*   @Test
     public void testCalculateWeeklyFamilyFruitVeggies(){
 
-    }
+    } */
 
     
 
