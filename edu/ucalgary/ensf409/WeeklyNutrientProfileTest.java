@@ -1,4 +1,4 @@
-
+package edu.ucalgary.ensf409;
 /**
  @author Jannine Osman <a href="mailto:jannine.osman@ucalgary.ca">jannine.osman@ucalgary.ca</a>
          Sukriti Sharma <a href="mailto:sukriti.sharma@ucalgary.ca">sukriti.sharma@ucalgary.ca</a>
@@ -15,15 +15,19 @@ import java.util.*;
 
 public class WeeklyNutrientProfileTest {
 
-    // sample data
 
+    //sample data to test the code with
+    //data used is arbitrary    
     long testWholeGrains = 55;
     long testFruitVeggies = 20;
     long testProtein = 30;
     long testOther = 25;
     long testCalories = 1000;
 
-    // test constructor
+   
+    //test constructor of WeeklyNutrientProfile
+    //constructor has tested 5 arguments inside the weeklyNutrientConstructor variable
+    //testing whether the WeeklyNutrientProfile constructor has successfully created an object or not
     @Test
     public void testWeeklyNutrientConstructor() {
         WeeklyNutrientProfile weeklyNutrientConstructor = new WeeklyNutrientProfile(testWholeGrains,
@@ -32,8 +36,9 @@ public class WeeklyNutrientProfileTest {
                 weeklyNutrientConstructor);
     }
 
-    // test method getWholeGrain()
-    @Test
+    //test method getWholeGrain()
+    //DailyNeed has tested 7 arguments inside the dailyNeed variable
+    //testing whether the the correct amount of whole grains has been returned based on the arbitrary testing values above       @Test
     public void testGetWholeGrain() {
         WeeklyNutrientProfile weeklyNutrient = new WeeklyNutrientProfile(testWholeGrains,
                 testFruitVeggies, testProtein, testOther, testCalories);

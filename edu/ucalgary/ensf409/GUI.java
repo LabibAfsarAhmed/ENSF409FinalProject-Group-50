@@ -1,3 +1,13 @@
+/**
+ @author Jannine Osman <a href="mailto:jannine.osman@ucalgary.ca">jannine.osman@ucalgary.ca</a>
+         Sukriti Sharma <a href="mailto:sukriti.sharma@ucalgary.ca">sukriti.sharma@ucalgary.ca</a>
+         Caroline Basta <a href="mailto:caroline.basta1@ucalgary.ca">caroline.basta1@ucalgary.ca</a>
+         Labib Afsar Ahmed <a href="mailto:labibafsar.ahmed@ucalgary.ca">labibafsar.ahmed@ucalgary.ca</a>
+ @version       1.8
+ @since         1.0
+ */
+package edu.ucalgary.ensf409;
+
 // ENSF 409 W22 Group 50 final project 
 
 import javax.swing.*;
@@ -20,10 +30,10 @@ import java.util.ArrayList;
 
 // * a txt file will be created with the hamper orders for each of the families entered 
 
-public class GUI {
+public class GUI{
 
-    // all the vaiables needed to store information collected from the GUI and
-    // to send it to other classes for the order form to bew created
+    // all the vaiables needed to store information collected from the GUI and 
+    // to send it to other classes for the order form to bew created 
     private static List<FamilyProfile> requestedFamilies = new ArrayList<>();
     static String employeeName = " ";
     static int families;
@@ -37,13 +47,13 @@ public class GUI {
     static JTextField employeeIn = new JTextField("               ");
     static JTextField numOfFams = new JTextField("  ");
 
-    // spinners for user to enter the number of each family members
+    // spinners for user to enter the number of each family members 
     static JSpinner AdultFemales = new JSpinner();
     static JSpinner AdultMales = new JSpinner();
     static JSpinner childrenOver8 = new JSpinner();
     static JSpinner childrenUnder8 = new JSpinner();
-
-    // checkbox for if the family needs weekly service
+    
+    // checkbox for if the family needs weekly service 
     static JCheckBox checkbox = new JCheckBox("Weekly service required?");
 
     public static void main(String args[]) {
@@ -54,13 +64,14 @@ public class GUI {
             frame.setSize(1000, 300);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            // create multiple panels for all the elements that must go on the GUI
+
+            // create multiple panels for all the elements that must go on the GUI 
             JPanel buttonPanel = new JPanel();
             JPanel clientPanel = new JPanel();
             JPanel rightPanel = new JPanel();
             JPanel titlePanel = new JPanel();
 
-            // all the buttons and labels needed for the GUI
+            // all the buttons and labels needed for the GUI 
             JButton submit = new JButton("Add family");
             JButton doneSubmit = new JButton("Submit final order");
             JLabel instructions = new JLabel("Please enter the required information to produce a hamper order form.");
@@ -70,8 +81,8 @@ public class GUI {
             JLabel familyOver8 = new JLabel("Please enter the number of children over 8 in family");
             JLabel familyUnder8 = new JLabel("Please enter the number of children under 8 in family");
             JLabel numberOfFams = new JLabel("The number of families added: ");
-
-            // Adding all the elements to their respective panels
+            
+            // Adding all the elements to their respective panels 
             buttonPanel.add(submit);
             titlePanel.add(instructions);
             clientPanel.add(employeeLabel);
@@ -92,7 +103,7 @@ public class GUI {
 
             // create an action listener for the submit family button
             // so that when it is pressed, a family object will be created
-            // based on the data entered for the family
+            // based on the data entered for the family 
             submit.addActionListener((e) -> {
                 submitAction();
             });
@@ -111,19 +122,16 @@ public class GUI {
             frame.getContentPane().add(BorderLayout.NORTH, titlePanel);
             frame.getContentPane().add(BorderLayout.CENTER, rightPanel);
 
-            // set frane visibility to true so that all elements are visible
+            // set frane visibility to true so that all elements are visible 
             frame.setVisible(true);
         });
 
     }
 
-    /**
-     * Submits the final order with all the included families that were entered in
-     * the GUI
-     * Will create an order form with the employee name, and the list of requested
-     * families
-     * The order will be used in the HamperCreator and then the order form will be
-     * printed to a text file
+    /** Submits the final order with all the included families that were entered in the GUI
+     *  Will create an order form with the employee name, and the list of requested families
+     *  The order will be used in the HamperCreator and then the order form will be 
+     *  printed to a text file 
      */
     private static void submitFinalOrder() {
         if ("".equals(employeeName) || requestedFamilies.size() == 0) {
@@ -150,30 +158,27 @@ public class GUI {
     // Gets all the values from the entered family values on the GUI
     // The values are used to create a new family profile, that
     // family profile is then added to the requestedFamilies list
-    // once the family profiles is created the inpu values on the GUI are reset for
-    // the
+    // once the family profiles is created the inpu values on the GUI are reset for the
     // family composition values
     // throws an exception if any of the entered values are negative
-    private static void submitAction() throws IllegalArgumentException {
+    private static void submitAction() throws IllegalArgumentException{
         families += 1;
         employeeName = employeeIn.getText();
         adultFemales = (int) AdultFemales.getValue();
         adultMales = (int) AdultMales.getValue();
         childrenOver8Yrs = (int) childrenOver8.getValue();
         childrenUnder8Yrs = (int) childrenUnder8.getValue();
-        if (checkbox.isSelected()) {
+        if(checkbox.isSelected()){
             weeklyServiceHampers = true;
         } else {
             weeklyServiceHampers = false;
         }
-        if (adultFemales < 0 || adultMales < 0 || childrenOver8Yrs < 0 || childrenUnder8Yrs < 0) {
+        if(adultFemales < 0 || adultMales < 0 || childrenOver8Yrs < 0 || childrenUnder8Yrs < 0){
             throw new IllegalArgumentException();
         }
 
-        // creates a family object and adds it to list with the collected values from
-        // the GUI
-        FamilyProfile family = new FamilyProfile(adultFemales, adultMales, childrenOver8Yrs, childrenUnder8Yrs,
-                weeklyServiceHampers);
+        // creates a family object and adds it to list with the collected values from the GUI 
+        FamilyProfile family = new FamilyProfile(adultFemales, adultMales, childrenOver8Yrs, childrenUnder8Yrs, weeklyServiceHampers);
         requestedFamilies.add(family);
 
         // set the spinners to 0 so another family can be entered
@@ -182,8 +187,8 @@ public class GUI {
         childrenOver8.setValue(0);
         childrenUnder8.setValue(0);
 
-        // increase the number of families entered by 1 to know how many are on the
-        // order form
+        // increase the number of families entered by 1 to know how many are on the order form 
         numOfFams.setText(Integer.toString(families));
     }
 }
+
