@@ -8,6 +8,13 @@ import java.util.List;
 public class HamperCreator {
     private Order order;
 
+    /**
+     * Constructor for HamperCreator, sets the order, and sums all the total
+     * nutrients seperatly to compare the values with the inventory to check for
+     * shortage exception.
+     * 
+     * @param order is an object of type Order
+     */
     public HamperCreator(Order order) {
         List<FamilyProfile> familyProfiles = order.getRequestedFamilies();
         for (FamilyProfile familyProfile : familyProfiles) {
@@ -37,7 +44,9 @@ public class HamperCreator {
         this.order = order; // taking order
     }
 
-    // making the hamper
+    /**
+     * making the hamper
+     */
     public void buildHamper() {
         List<Hamper> hampers = new ArrayList<>();
         List<FamilyProfile> familyProfiles = order.getRequestedFamilies(); // all the families in an array
@@ -55,7 +64,14 @@ public class HamperCreator {
         order.setCreatedHamper(hampers); // setting all the hampers in order.
     }
 
-    // picking minimum items from total inventorty items based on family needs
+    /**
+     * picking minimum items from total inventorty items based on family needs then
+     * removing the selected items from the inventory
+     * 
+     * @param items           list of items from the inventory
+     * @param nutrientProfile the family nutrition needed for the family
+     * @return the pickedItems to create the hamper
+     */
     private List<FoodItem> pickMinimumItem(List<FoodItem> items, WeeklyNutrientProfile nutrientProfile) {
         long neededGrains = nutrientProfile.getWholeGrain();
         long neededFV = nutrientProfile.getFruitVeggies();
@@ -85,63 +101,76 @@ public class HamperCreator {
         }
 
         List<FoodItem> minFVItems = new ArrayList<>();
-        items.sort(Comparator.comparing(FoodItem::getFVContent).reversed());
+        items.sort(Comparator.comparing(FoodItem::getFVContent).reversed()); // sorting inventroy food list based on
+                                                                             // highest FVContent.
         for (FoodItem item : items) {
-            if (neededFV <= 0)
+            if (neededFV <= 0)// stop picking items if FVContent need is fulfilled.
                 break;
             if (item.getFVContent() == 0 || item.getFVContent() > neededFV)
                 continue;
+            minFVItems.add(item); // add FVContent item to minimum FVContent items needed list.
+            // decrease the family nutrition need by this item.
             neededGrains -= item.getGrainContent();
             neededFV -= item.getFVContent();
             neededProtein -= item.getProContent();
             neededOther -= item.getOther();
             neededCalories -= item.getCalories();
-            minFVItems.add(item);
+
         }
 
         List<FoodItem> minProteinItems = new ArrayList<>();
-        items.sort(Comparator.comparing(FoodItem::getProContent).reversed());
+        items.sort(Comparator.comparing(FoodItem::getProContent).reversed()); // sorting inventroy food list based on
+                                                                              // highest protein.
         for (FoodItem item : items) {
-            if (neededProtein <= 0)
+            if (neededProtein <= 0)// stop picking items if protein need is fulfilled.
                 break;
             if (item.getProContent() == 0 || item.getProContent() > neededProtein)
                 continue;
+            minProteinItems.add(item);// add protein item to minimum protein items needed list.
+            // decrease the family nutrition need by this item.
             neededGrains -= item.getGrainContent();
             neededFV -= item.getFVContent();
             neededProtein -= item.getProContent();
             neededOther -= item.getOther();
             neededCalories -= item.getCalories();
-            minProteinItems.add(item);
+
         }
 
         List<FoodItem> minOtherItems = new ArrayList<>();
-        items.sort(Comparator.comparing(FoodItem::getOther).reversed());
+        items.sort(Comparator.comparing(FoodItem::getOther).reversed()); // sorting inventroy food list based on highest
+                                                                         // other.
         for (FoodItem item : items) {
-            if (neededOther <= 0)
+            if (neededOther <= 0)// stop picking items if other need is fulfilled.
                 break;
             if (item.getOther() == 0 || item.getOther() > neededOther)
                 continue;
+            minOtherItems.add(item);// add other item to minimum other items needed list.
+            // decrease the family nutrition need by this item.
             neededGrains -= item.getGrainContent();
             neededFV -= item.getFVContent();
             neededProtein -= item.getProContent();
             neededOther -= item.getOther();
             neededCalories -= item.getCalories();
-            minOtherItems.add(item);
+
         }
 
         List<FoodItem> minCaloriesItems = new ArrayList<>();
-        items.sort(Comparator.comparing(FoodItem::getCalories).reversed());
+        items.sort(Comparator.comparing(FoodItem::getCalories).reversed()); // sorting inventroy food list based on
+                                                                            // highest calories.
         for (FoodItem item : items) {
-            if (neededCalories <= 0)
+            if (neededCalories <= 0)// stop picking items if calories need is fulfilled.
                 break;
             if (item.getCalories() == 0 || item.getCalories() > neededCalories)
                 continue;
+
+            minCaloriesItems.add(item);// add calories item to minimum calories items needed list.
+            // decrease the family nutrition need by this item.
             neededGrains -= item.getGrainContent();
             neededFV -= item.getFVContent();
             neededProtein -= item.getProContent();
             neededOther -= item.getOther();
             neededCalories -= item.getCalories();
-            minCaloriesItems.add(item);
+
         }
 
         // adding all the items list into one list.
@@ -153,8 +182,8 @@ public class HamperCreator {
         pickedItems.addAll(minCaloriesItems);
 
         pickedItems = new ArrayList<>(new HashSet<>(pickedItems)); // removing duplicate items if any
-        pickedItems.sort(Comparator.comparing(FoodItem::getId)); //sorting items as lowest itemID
-        //removing picked items from inventory and list.
+        pickedItems.sort(Comparator.comparing(FoodItem::getId)); // sorting items as lowest itemID
+        // removing picked items from inventory and list.
         pickedItems.stream().map(i -> i.getId()).forEach(InventoryData::deleteFoodItem);
         items.removeAll(pickedItems);
 

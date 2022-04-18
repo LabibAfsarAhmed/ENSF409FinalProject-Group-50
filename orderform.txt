@@ -1,9 +1,8 @@
-Name:    Sam           
+Name: Sam               
 Date: 2022-04-18
 
 Original Request
 Hamper 1: 2 Adult Female
-Hamper 2: 1 Adult Male, 1 Child over 8
 
 
 Hamper 1 Items
@@ -23,26 +22,4 @@ Hamper 1 Items
 142 Whey powder, large jar
 144 Tinned vegetable chilli
 163 Bluegreen algae powder, 100 g
-
-
-Hamper 2 Items
-7 Chicken broth, can
-12 Wheat bread, loaf
-13 Wheat bread, loaf
-14 Orange, dozen
-15 Orange, dozen
-27 Lettuce, 3 heads
-28 Bananas, bunch
-80 Chickpeas, 1 kg
-95 Lentils, 1 kg
-104 Green peas, 1 pound
-112 Brown rice, large bag
-115 Raisin bran, 1 box
-131 Roasted seaweed, 250 g
-134 Salmon, 5 filets
-135 Frozen squid, 1 pound
-143 Oranges, bag
-150 Bean sprouts, 1 kg
-160 Strawberry Skyr
-162 Cottage cheese
 
