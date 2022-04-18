@@ -1,8 +1,9 @@
 # ENSF409FinalProject-Group-50
 
 This is our ENSF 409 final project (Group-50) repository.
+<br>
 Note: The database username is "student" and password is "ensf".
-
+<br>
 <br>
 The Unit tests have been designed to work with the original given database (inventory.sql), if you want to make changes to the tests, please make sure you put the correct values into the expected values.
 <br>
