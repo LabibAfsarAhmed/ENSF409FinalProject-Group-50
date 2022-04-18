@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class OrderTest {
     /**
      * initalize employee name
@@ -127,7 +126,6 @@ public class OrderTest {
         assertEquals("Method getRequestedFamilies did not return the expected result: ", expected, found);
 
     }
-    
     
     /**
      * test method toString()

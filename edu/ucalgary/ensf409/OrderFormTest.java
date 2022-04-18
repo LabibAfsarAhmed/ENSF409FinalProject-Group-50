@@ -23,7 +23,6 @@ public class OrderFormTest{
      */
     private List<FamilyProfile> requestedFamilies = new ArrayList<>(); //creates a new array list of different
                                                                        // families from family profile
-
     @Test
      public void CreateTxtFile(){
             Order newOrder = null;         //start with an empty order

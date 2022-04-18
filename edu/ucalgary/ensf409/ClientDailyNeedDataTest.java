@@ -16,9 +16,9 @@ import java.sql.*;
 
 public class ClientDailyNeedDataTest{
     /**
-     * composition of each family
-     * boolean for weekly service needed is true 
-     * the numbers get passed to the family profile to create the family
+     * this creates the composition of each family
+     * boolean for weekly service needed is initially true 
+     * the number of each family member get passed to the family profile to create the family
      * the client ID is obtained from the getter in the ClientDailyNeedData file
      */
     int testFemales = 2;
@@ -35,11 +35,11 @@ public class ClientDailyNeedDataTest{
     DailyNeed childUnderDailyNeed = ClientDailyNeedData.getDailyNeed(4);
     
 
-    // test calculateWeeklyFamilyWholeGrains()
     /**
-     * takes number of the number of males in each family and multiplies it by their daily needs
+     * test calculateWeeklyFamilyWholeGrains()
+     * takes amount of grains per food item and multiplies it by each family member's daily needs
      * then, this value is multiplied by 7 for the the whole week
-     * this process is reepeated for every food item
+     * this process is repeated for every family member 
      */
     @Test
     public void testCalculateWeeklyFamilyWholeGrains(){
@@ -51,7 +51,12 @@ public class ClientDailyNeedDataTest{
 
     }
 
-    //test calculateWeeklyFamilyFruitVeggies()
+    /**
+     * test calculateWeeklyFamilyFruitVeggies()
+     * takes amount of fruits and vegetables per food item and multiplies it by each family member's daily needs
+     * then, this value is multiplied by 7 for the the whole week
+     * this process is repeated for every family member 
+     */
     @Test
     public void testCalculateWeeklyFamilyFruitVeggies(){
 
@@ -62,7 +67,13 @@ public class ClientDailyNeedDataTest{
         assertEquals("Method CalculateWeeklyFamilyWholeGrains() did not return the expected result: ", expected, found);
     } 
 
-    // test calculateWeeklyFamilyProtein()
+
+     /**
+     * test calculateWeeklyFamilyProtein()
+     * takes amount of protein per food item and multiplies it by each family member's daily needs
+     * then, this value is multiplied by 7 for the the whole week
+     * this process is repeated for every family member 
+     */
     @Test
     public void testCalculateWeeklyFamilyProtein() {
 
@@ -74,7 +85,12 @@ public class ClientDailyNeedDataTest{
         assertEquals("Method CalculateWeeklyFamilyProtein() did not return the expected result: ", expected, found);
     }
 
-    // test calculateWeeklyOther()
+     /**
+     * test calculateWeeklyOther()
+     * takes amount of other food items and multiplies it by each family member's daily needs
+     * then, this value is multiplied by 7 for the the whole week
+     * this process is repeated for every family member 
+     */
     @Test
     public void testCalculateWeeklyFamilyOther() {
 
@@ -86,7 +102,12 @@ public class ClientDailyNeedDataTest{
         assertEquals("Method CalculateWeeklyFamilyOther() did not return the expected result: ", expected, found);
     }
 
-    // test calculateWeeklyFamilyTotalCalories()
+     /**
+     * test calculateWeeklyFamilyTotalCalories()
+     * takes amount of calories per food item and multiplies it by each family member's daily needs
+     * then, this value is multiplied by 7 for the the whole week
+     * this process is repeated for every family member 
+     */
     @Test
     public void testCalculateWeeklyFamilyTotalCalories() {
 
@@ -97,7 +118,5 @@ public class ClientDailyNeedDataTest{
         long found = ClientDailyNeedData.calculateWeeklyFamilyTotalCalories(family);
         assertEquals("Method CalculateWeeklyFamilyTotalCalories() did not return the expected result: ", expected, found);
     }
-
-    
 
 }
