@@ -85,7 +85,7 @@ public class FamilyProfileTest{
 
     // test getWeeklyNutrientProfile()
     @Test
-    public void testGetWeeklyNutrientProfile() {
+    public void testGetWeeklyNutrientProfile() {   //NOT PASSING!!!!!!
         FamilyProfile familyProfile = new FamilyProfile(testFemales, testMales, testOverEight,
                 testUnderEight, testWeeklyService);
         WeeklyNutrientProfile expectedValue = testWeeklyNutrientProfile;
