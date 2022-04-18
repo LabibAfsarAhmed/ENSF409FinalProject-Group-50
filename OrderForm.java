@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> f0bdc379b09ffc77965350f1df423f08c356e312
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,21 +11,21 @@ public class OrderForm {
 
     public OrderForm(Order order) {
         this.order = order;
-        outputToText();
+        outputText();
     }
 
-    public void outputToText() {
+    public void outputText() {
         try {
-            File obj = new File("orderform.txt"); //creates a new File called orderform.txt
-            FileWriter fw = new FileWriter(obj);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(order.toString()); // writes the order string to the orderform file
-            bw.flush();
-            bw.close();
-        } catch (FileNotFoundException ex) { // throws exception if it is unable to open the orderform file
+            File output = new File("orderform.txt"); 
+            FileWriter write = new FileWriter(output);
+            BufferedWriter buffer = new BufferedWriter(write);
+            buffer.write(order.toString()); 
+            buffer.flush();
+            buffer.close();
+        } catch (FileNotFoundException ex) {
             System.out.print("unable to open file");
 
-        } catch (IOException ex) { // throws error if it is unable to write to orderform.txt
+        } catch (IOException ex) {
             System.out.print("error writing to file");
         }
     }

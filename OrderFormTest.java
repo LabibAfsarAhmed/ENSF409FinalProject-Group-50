@@ -14,21 +14,14 @@ import java.util.*;
 
 
 public class OrderFormTest{
-    private Order order;
-
-    @Test
-    public void testOrderFormConstructor(){
-        OrderForm OrderFormConstructor = new OrderForm(order);
-        assertNotNull("OrderForm constructor did not create an object when given valid arguments.",
-        OrderFormConstructor);
-    }
+    private List<FamilyProfile> requestedFamilies = new ArrayList<>(); 
 
     @Test
      public void CreateTxtFile(){
             Order newOrder = null;
 
             try{
-                newOrder = new Order("Sam", );
+                newOrder = new Order("Sam", requestedFamilies);
                 OrderForm orderForm = new OrderForm(newOrder);
             }catch(Exception e){
     
