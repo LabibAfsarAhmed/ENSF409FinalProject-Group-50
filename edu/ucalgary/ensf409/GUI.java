@@ -1,3 +1,5 @@
+package edu.ucalgary.ensf409;
+
 // ENSF 409 W22 Group 50 final project 
 
 import javax.swing.*;
