@@ -1,5 +1,3 @@
-
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,22 +10,22 @@ public class OrderForm {
 
     public OrderForm(Order order) {
         this.order = order;
-        outputToText();
+        outputText();
     }
 
-    public void outputToText() {
+    public void outputText() {
         try {
-            File obj = new File("orderform.txt"); //creates a new File called orderform.txt
-            FileWriter fw = new FileWriter(obj);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(order.toString()); // writes the order string to the orderform file
-            bw.flush();
-            bw.close();
-        } catch (FileNotFoundException ex) { // throws exception if it is unable to open the orderform file
-            System.out.print("unable to open file");
+            File output = new File("orderform.txt");
+            FileWriter write = new FileWriter(output);
+            BufferedWriter buffer = new BufferedWriter(write);
+            buffer.write(order.toString());
+            buffer.flush();
+            buffer.close();
+        } catch (FileNotFoundException ex) {
+            System.out.print("Error: file couldn't be opened.");
 
-        } catch (IOException ex) { // throws error if it is unable to write to orderform.txt
-            System.out.print("error writing to file");
+        } catch (IOException ex) {
+            System.out.print("Error: file couldn't be written.");
         }
     }
 }
