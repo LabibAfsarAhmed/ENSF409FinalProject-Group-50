@@ -1,44 +1,39 @@
 
 
-
 public class FamilyProfile {
     private int adultFemales;
     private int adultMales;
     private int childrenUnder8;
     private int childrenOver8;
-    private int multipleHampers; 
-    private int weeklyServiceHampers;
+    private boolean weeklyServiceHampers;
     private WeeklyNutrientProfile WeeklyNutrientProfile;
 
-    public FamilyProfile(int adultFemales, int adultMales, int childrenOver8, int childrenUnder8, int multipleHampers, boolean weeklyServiceHampers){
+    public FamilyProfile(int adultFemales, int adultMales, int childrenOver8, int childrenUnder8,
+            boolean weeklyServiceHampers) {
         this.adultFemales = adultFemales;
         this.adultMales = adultMales;
         this.childrenOver8 = childrenOver8;
         this.childrenUnder8 = childrenUnder8;
-        this.multipleHampers = multipleHampers;
+        this.weeklyServiceHampers = weeklyServiceHampers;
     }
 
-    public int getAdultFemales(){
+    public int getAdultFemales() {
         return this.adultFemales;
     }
 
-    public int getAdultMales(){
+    public int getAdultMales() {
         return this.adultMales;
     }
 
-    public int getChildrenOver8(){
+    public int getChildrenOver8() {
         return this.childrenOver8;
     }
 
-    public int getChildrenUnder8(){
+    public int getChildrenUnder8() {
         return this.childrenUnder8;
     }
 
-    public int getMultipleHampers(){
-        return this.multipleHampers;
-    }
-
-    public int getWeeklyServiceHampers() {
+    public boolean getWeeklyServiceHampers() {
         return this.weeklyServiceHampers;
     }
 
@@ -60,7 +55,7 @@ public class FamilyProfile {
             sb.append(" ").append(childrenUnder8).append(" Child under 8,");
         if (childrenOver8 > 0)
             sb.append(" ").append(childrenOver8).append(" Child over 8,");
-        
+
         return sb.toString().replaceAll(",$", "");
     }
 
