@@ -11,65 +11,77 @@ public class HamperCreator {
     public HamperCreator(Order order) {
         List<FamilyProfile> familyProfiles = order.getRequestedFamilies();
         for (FamilyProfile familyProfile : familyProfiles) {
-            ClientDailyNeedData.calculateWeeklyFamilyNeeds(familyProfile);
+            ClientDailyNeedData.calculateWeeklyFamilyNeeds(familyProfile); // calculte weekly family need and sets it to
+                                                                           // family profile
         }
 
         long totalGrains = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getWholeGrain()).reduce(0L,
-                Long::sum);
+                Long::sum); // Sum of total grain of all families.
         long totalFVContent = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getFruitVeggies())
-                .reduce(0L, Long::sum);
+                .reduce(0L, Long::sum); // Sum of total FVcontent of all families.
         long totalProtein = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getProtein()).reduce(0L,
-                Long::sum);
+                Long::sum); // Sum of total protein of all families.
         long totalOther = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getOther()).reduce(0L,
-                Long::sum);
+                Long::sum); // Sum of total other of all families.
         long totalCalories = familyProfiles.stream().map(f -> f.getWeeklyNutrientProfile().getCalories()).reduce(0L,
-                Long::sum);
+                Long::sum); // Sum of total calories of all families.
 
+        // checking all the families nutrition with inventory nutrition.
         if (totalGrains > InventoryData.getTotalGrain() || totalFVContent > InventoryData.getTotalFVContent() ||
                 totalProtein > InventoryData.getTotalProContent() || totalOther > InventoryData.getTotalOther()
                 || totalCalories > InventoryData.getTotalCalories()) {
 
-            throw new RuntimeException("Not enough stock!");
+            throw new RuntimeException("Not enough stock!"); // throwing inventory shortage error.
         }
 
-        this.order = order;
+        this.order = order; // taking order
     }
 
+    // making the hamper
     public void buildHamper() {
         List<Hamper> hampers = new ArrayList<>();
-        List<FamilyProfile> familyProfiles = order.getRequestedFamilies();
+        List<FamilyProfile> familyProfiles = order.getRequestedFamilies(); // all the families in an array
 
+        // Creates hamper with minimum item for all the families
         for (FamilyProfile familyProfile : familyProfiles) {
-            List<FoodItem> items = pickMinimumItem(InventoryData.getFoodItems(),
+            List<FoodItem> items = pickMinimumItem(InventoryData.getFoodItems(), // picking the minimum items against
+                                                                                 // families nutrition need
                     familyProfile.getWeeklyNutrientProfile());
 
-            Hamper hamper = new Hamper(items);
-            hampers.add(hamper);
+            Hamper hamper = new Hamper(items); // creating the hamper
+            hampers.add(hamper); // adding the hamper to the hamper list
         }
 
-        order.setCreatedHamper(hampers);
+        order.setCreatedHamper(hampers); // setting all the hampers in order.
     }
 
+    // picking minimum items from total inventorty items based on family needs
     private List<FoodItem> pickMinimumItem(List<FoodItem> items, WeeklyNutrientProfile nutrientProfile) {
-        List<FoodItem> minGrainItems = new ArrayList<>();
         long neededGrains = nutrientProfile.getWholeGrain();
         long neededFV = nutrientProfile.getFruitVeggies();
         long neededProtein = nutrientProfile.getProtein();
         long neededOther = nutrientProfile.getOther();
         long neededCalories = nutrientProfile.getCalories();
 
-        items.sort(Comparator.comparing(FoodItem::getGrainContent).reversed());
+        List<FoodItem> minGrainItems = new ArrayList<>();
+        items.sort(Comparator.comparing(FoodItem::getGrainContent).reversed()); // sorting inventroy food list based on
+                                                                                // highest grains.
         for (FoodItem item : items) {
-            if (neededGrains <= 0)
+            if (neededGrains <= 0) // stop picking items if grain need is fulfilled.
                 break;
-            if (item.getGrainContent() == 0 || item.getGrainContent() > neededGrains)
+            if (item.getGrainContent() == 0 || item.getGrainContent() > neededGrains) // Skip picking item if there is
+                                                                                      // no grain for that item or the
+                                                                                      // grain of the item is more than
+                                                                                      // requirement.
                 continue;
+
+            minGrainItems.add(item); // add grain item to minimum grain items needed list.
+            // decrease the family nutrition need by this item.
             neededGrains -= item.getGrainContent();
             neededFV -= item.getFVContent();
             neededProtein -= item.getProContent();
             neededOther -= item.getOther();
             neededCalories -= item.getCalories();
-            minGrainItems.add(item);
         }
 
         List<FoodItem> minFVItems = new ArrayList<>();
@@ -132,6 +144,7 @@ public class HamperCreator {
             minCaloriesItems.add(item);
         }
 
+        // adding all the items list into one list.
         List<FoodItem> pickedItems = new ArrayList<>();
         pickedItems.addAll(minGrainItems);
         pickedItems.addAll(minFVItems);
@@ -139,26 +152,11 @@ public class HamperCreator {
         pickedItems.addAll(minOtherItems);
         pickedItems.addAll(minCaloriesItems);
 
-        pickedItems = new ArrayList<>(new HashSet<>(pickedItems));
-        pickedItems.sort(Comparator.comparing(FoodItem::getId));
+        pickedItems = new ArrayList<>(new HashSet<>(pickedItems)); // removing duplicate items if any
+        pickedItems.sort(Comparator.comparing(FoodItem::getId)); //sorting items as lowest itemID
+        //removing picked items from inventory and list.
         pickedItems.stream().map(i -> i.getId()).forEach(InventoryData::deleteFoodItem);
         items.removeAll(pickedItems);
-
-        // System.out.println("Expected Grains: " + nutrientProfile.getWholeGrain());
-        // System.out.println(pickedItems.stream().map(FoodItem::getGrainContent).reduce(0,
-        // Integer::sum));
-        // System.out.println("Expected Fruits: " + nutrientProfile.getFruitVeggies());
-        // System.out.println(pickedItems.stream().map(FoodItem::getFVContent).reduce(0,
-        // Integer::sum));
-        // System.out.println("Expected Protein: " + nutrientProfile.getProtein());
-        // System.out.println(pickedItems.stream().map(FoodItem::getProContent).reduce(0,
-        // Integer::sum));
-        // System.out.println("Expected Other: " + nutrientProfile.getOther());
-        // System.out.println(pickedItems.stream().map(FoodItem::getOther).reduce(0,
-        // Integer::sum));
-        // System.out.println("Expected Calories: " + nutrientProfile.getCalories());
-        // System.out.println(pickedItems.stream().map(FoodItem::getCalories).reduce(0,
-        // Integer::sum));
 
         return pickedItems;
     }

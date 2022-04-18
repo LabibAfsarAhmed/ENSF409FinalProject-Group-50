@@ -1,5 +1,6 @@
 package edu.ucalgary.ensf409;
 
+//Weekly need of all the family members
 public class WeeklyNutrientProfile {
     private long wholeGrains;
     private long fruitVeggies;

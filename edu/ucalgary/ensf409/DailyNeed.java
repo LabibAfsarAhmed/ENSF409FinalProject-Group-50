@@ -1,5 +1,5 @@
 package edu.ucalgary.ensf409;
-
+// Need of a family member
 public class DailyNeed {
     private int id;
     private String clientType;
