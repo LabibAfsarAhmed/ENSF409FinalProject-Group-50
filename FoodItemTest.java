@@ -24,7 +24,7 @@ public class FoodItemTest{
     public void testFoodItemConstructor(){
             FoodItem foodItemConstructor = new FoodItem(testID,testName,testGrainContent,
                                                         testFvContent,testProContent,testOther,testCalories);
-            assertNotNull("FoodIrem constructor did not create an object when given valid arguments.", 
+            assertNotNull("FoodItem constructor did not create an object when given valid arguments.", 
                         foodItemConstructor);
     }
 
