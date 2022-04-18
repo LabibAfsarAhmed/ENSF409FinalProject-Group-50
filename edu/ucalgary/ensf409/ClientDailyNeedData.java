@@ -23,8 +23,8 @@ public class ClientDailyNeedData {
         DailyNeed dailyNeed = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "root",
-                    "3590");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "student",
+                    "ensf");
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM `DAILY_CLIENT_NEEDS` WHERE ClientID = " + clientId);

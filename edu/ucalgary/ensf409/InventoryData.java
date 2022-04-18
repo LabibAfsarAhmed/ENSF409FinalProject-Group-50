@@ -22,8 +22,8 @@ public class InventoryData {
         List<FoodItem> items = new ArrayList<>();        //creates an new array list from FoodItem class
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "root",
-                    "3590");   //ensure proper connection to the SQL database 
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "student",
+                    "ensf");   //ensure proper connection to the SQL database 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM `AVAILABLE_FOOD`"); //executeQuery method used to find the table with food list
 
@@ -47,8 +47,8 @@ public class InventoryData {
     public static void deleteFoodItem(int itemId) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "root",
-                    "3590");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "student",
+                    "ensf");
 
             Statement stmt = con.createStatement();
             stmt.executeUpdate("DELETE FROM `AVAILABLE_FOOD` WHERE ItemID = " + itemId); //executeUpdate where AVAILABLE_FOOD list gets updated 
@@ -69,8 +69,8 @@ public class InventoryData {
         long total = 0;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "root",
-                    "3590");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "student",
+                    "ensf");
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT SUM(" + column + ") FROM `AVAILABLE_FOOD`");

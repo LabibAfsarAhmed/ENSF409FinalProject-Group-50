@@ -21,13 +21,13 @@ public class ClientDailyNeedDataTest{
      * the number of each family member get passed to the family profile to create the family
      * the client ID is obtained from the getter in the ClientDailyNeedData file
      */
-    int testFemales = 2;
-    int testMales = 2;
-    int testUnderEight = 1;
-    int testOverEight = 3;
+    int FemalesClient = 2;
+    int MalesClient = 2;
+    int clientUnderEight = 1;
+    int clientOverEight = 3;
     boolean testWeeklyService = true;
-    FamilyProfile family = new FamilyProfile(testFemales, testMales, testOverEight,
-            testUnderEight, testWeeklyService);
+    FamilyProfile family = new FamilyProfile(FemalesClient, MalesClient, clientOverEight,
+            clientUnderEight, testWeeklyService);
     
     DailyNeed maleDailyNeed = ClientDailyNeedData.getDailyNeed(1);
     DailyNeed femaleDailyNeed = ClientDailyNeedData.getDailyNeed(2);
@@ -44,8 +44,8 @@ public class ClientDailyNeedDataTest{
     @Test
     public void testCalculateWeeklyFamilyWholeGrains(){
         //ClientDailyNeedData familyTest = new ClientDailyNeedData();
-        long expected = 7*((testMales * maleDailyNeed.getWholeGrain()) + (testFemales * femaleDailyNeed.getWholeGrain())+ 
-                                (testOverEight * childOverDailyNeed.getWholeGrain()) + (testUnderEight * childUnderDailyNeed.getWholeGrain()));
+        long expected = 7*((MalesClient * maleDailyNeed.getWholeGrain()) + (FemalesClient * femaleDailyNeed.getWholeGrain())+ 
+                                (clientOverEight * childOverDailyNeed.getWholeGrain()) + (clientUnderEight * childUnderDailyNeed.getWholeGrain()));
         long found = ClientDailyNeedData.calculateWeeklyFamilyWholeGrains(family);
         assertEquals("Method CalculateWeeklyFamilyWholeGrains() did not return the expected result: ", expected, found);
 
@@ -60,9 +60,9 @@ public class ClientDailyNeedDataTest{
     @Test
     public void testCalculateWeeklyFamilyFruitVeggies(){
 
-        long expected = 7* ((testMales * maleDailyNeed.getFruitVeggies()) + (testFemales * femaleDailyNeed.getFruitVeggies()) +
-                        (testOverEight * childOverDailyNeed.getFruitVeggies())
-                        + (testUnderEight * childUnderDailyNeed.getFruitVeggies()));
+        long expected = 7* ((MalesClient * maleDailyNeed.getFruitVeggies()) + (FemalesClient * femaleDailyNeed.getFruitVeggies()) +
+                        (clientOverEight * childOverDailyNeed.getFruitVeggies())
+                        + (clientUnderEight * childUnderDailyNeed.getFruitVeggies()));
         long found = ClientDailyNeedData.calculateWeeklyFamilyFruitVeggies(family);
         assertEquals("Method CalculateWeeklyFamilyWholeGrains() did not return the expected result: ", expected, found);
     } 
@@ -78,9 +78,9 @@ public class ClientDailyNeedDataTest{
     public void testCalculateWeeklyFamilyProtein() {
 
         long expected = 7
-                * ((testMales * maleDailyNeed.getProtein()) + (testFemales * femaleDailyNeed.getProtein()) +
-                        (testOverEight * childOverDailyNeed.getProtein())
-                        + (testUnderEight * childUnderDailyNeed.getProtein()));
+                * ((MalesClient * maleDailyNeed.getProtein()) + (FemalesClient * femaleDailyNeed.getProtein()) +
+                        (clientOverEight * childOverDailyNeed.getProtein())
+                        + (clientUnderEight * childUnderDailyNeed.getProtein()));
         long found = ClientDailyNeedData.calculateWeeklyFamilyProtein(family);
         assertEquals("Method CalculateWeeklyFamilyProtein() did not return the expected result: ", expected, found);
     }
@@ -95,9 +95,9 @@ public class ClientDailyNeedDataTest{
     public void testCalculateWeeklyFamilyOther() {
 
         long expected = 7
-                * ((testMales * maleDailyNeed.getOther()) + (testFemales * femaleDailyNeed.getOther()) +
-                        (testOverEight * childOverDailyNeed.getOther())
-                        + (testUnderEight * childUnderDailyNeed.getOther()));
+                * ((MalesClient * maleDailyNeed.getOther()) + (FemalesClient * femaleDailyNeed.getOther()) +
+                        (clientOverEight * childOverDailyNeed.getOther())
+                        + (clientUnderEight * childUnderDailyNeed.getOther()));
         long found = ClientDailyNeedData.calculateWeeklyFamilyOther(family);
         assertEquals("Method CalculateWeeklyFamilyOther() did not return the expected result: ", expected, found);
     }
@@ -112,9 +112,9 @@ public class ClientDailyNeedDataTest{
     public void testCalculateWeeklyFamilyTotalCalories() {
 
         long expected = 7
-                * ((testMales * maleDailyNeed.getCalories()) + (testFemales * femaleDailyNeed.getCalories()) +
-                        (testOverEight * childOverDailyNeed.getCalories())
-                        + (testUnderEight * childUnderDailyNeed.getCalories()));
+                * ((MalesClient * maleDailyNeed.getCalories()) + (FemalesClient * femaleDailyNeed.getCalories()) +
+                        (clientOverEight * childOverDailyNeed.getCalories())
+                        + (clientUnderEight * childUnderDailyNeed.getCalories()));
         long found = ClientDailyNeedData.calculateWeeklyFamilyTotalCalories(family);
         assertEquals("Method CalculateWeeklyFamilyTotalCalories() did not return the expected result: ", expected, found);
     }
