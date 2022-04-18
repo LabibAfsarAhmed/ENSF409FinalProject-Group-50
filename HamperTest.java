@@ -19,7 +19,7 @@ import java.util.List;
 public class HamperTest{
     List<FoodItem> sampleFood = new ArrayList<>();
     List<FoodItem> testFood = createFoodItems(sampleFood);
-
+    //crease sample food item for testing
     public List<FoodItem> createFoodItems(List<FoodItem> sampleFood){
             FoodItem foodItem1 = new FoodItem(34, "Apple", 100,
                 88, 23, 15, 1994);
