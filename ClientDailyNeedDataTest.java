@@ -13,51 +13,20 @@ import java.sql.*;
 
 
 public class ClientDailyNeedDataTest{
-    int testFemales = 1;
+    int testFemales = 2;
     int testMales = 2;
-    int testUnderEight = 3;
-    int testOverEight = 4;
+    int testUnderEight = 1;
+    int testOverEight = 3;
     boolean testWeeklyService = true;
     FamilyProfile family = new FamilyProfile(testFemales, testMales, testOverEight,
             testUnderEight, testWeeklyService);
-    // DailyNeed female = new DailyNeed(2, "Adult Female", 100, 90,200, 10,2000);
-    // DailyNeed male = new DailyNeed(1, "Adult Male", 120, 100, 300, 70, 2700);
-    // DailyNeed childrenOver8 = new DailyNeed(1, "Children Over 8", 60, 180, 100, 30, 3000);
-    // DailyNeed childrenUnder8 = new DailyNeed(1, "Children Under 8", 80, 380, 120, 40, 3400);
-
-            //test constructor
-   /* @Test
-    public void calculateWeeklyFamilyNeeds(){
-
-    } */
-   
-
-    public static DailyNeed getDailyNeed(int clientId) {
-
-        DailyNeed dailyNeed = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food_inventory", "student",
-                    "ensf");
-
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM `DAILY_CLIENT_NEEDS` WHERE ClientID = " + clientId);
-
-            while (rs.next())
-                dailyNeed = new DailyNeed(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
-                        rs.getInt(6), rs.getInt(7));
-            con.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return dailyNeed;
-    }
     
-    DailyNeed maleDailyNeed = getDailyNeed(1);
-    DailyNeed femaleDailyNeed = getDailyNeed(2);
-    DailyNeed childOverDailyNeed = getDailyNeed(3);
-    DailyNeed childUnderDailyNeed = getDailyNeed(4);
+    DailyNeed maleDailyNeed = ClientDailyNeedData.getDailyNeed(1);
+    DailyNeed femaleDailyNeed = ClientDailyNeedData.getDailyNeed(2);
+    DailyNeed childOverDailyNeed = ClientDailyNeedData.getDailyNeed(3);
+    DailyNeed childUnderDailyNeed = ClientDailyNeedData.getDailyNeed(4);
     
+
     // test calculateWeeklyFamilyWholeGrains()
     @Test
     public void testCalculateWeeklyFamilyWholeGrains(){
@@ -70,10 +39,51 @@ public class ClientDailyNeedDataTest{
     }
 
     //test calculateWeeklyFamilyFruitVeggies()
- /*   @Test
+    @Test
     public void testCalculateWeeklyFamilyFruitVeggies(){
 
-    } */
+        long expected = 7* ((testMales * maleDailyNeed.getFruitVeggies()) + (testFemales * femaleDailyNeed.getFruitVeggies()) +
+                        (testOverEight * childOverDailyNeed.getFruitVeggies())
+                        + (testUnderEight * childUnderDailyNeed.getFruitVeggies()));
+        long found = ClientDailyNeedData.calculateWeeklyFamilyFruitVeggies(family);
+        assertEquals("Method CalculateWeeklyFamilyWholeGrains() did not return the expected result: ", expected, found);
+    } 
+
+    // test calculateWeeklyFamilyProtein()
+    @Test
+    public void testCalculateWeeklyFamilyProtein() {
+
+        long expected = 7
+                * ((testMales * maleDailyNeed.getProtein()) + (testFemales * femaleDailyNeed.getProtein()) +
+                        (testOverEight * childOverDailyNeed.getProtein())
+                        + (testUnderEight * childUnderDailyNeed.getProtein()));
+        long found = ClientDailyNeedData.calculateWeeklyFamilyProtein(family);
+        assertEquals("Method CalculateWeeklyFamilyProtein() did not return the expected result: ", expected, found);
+    }
+
+    // test calculateWeeklyOther()
+    @Test
+    public void testCalculateWeeklyFamilyOther() {
+
+        long expected = 7
+                * ((testMales * maleDailyNeed.getOther()) + (testFemales * femaleDailyNeed.getOther()) +
+                        (testOverEight * childOverDailyNeed.getOther())
+                        + (testUnderEight * childUnderDailyNeed.getOther()));
+        long found = ClientDailyNeedData.calculateWeeklyFamilyOther(family);
+        assertEquals("Method CalculateWeeklyFamilyOther() did not return the expected result: ", expected, found);
+    }
+
+    // test calculateWeeklyFamilyTotalCalories()
+    @Test
+    public void testCalculateWeeklyFamilyTotalCalories() {
+
+        long expected = 7
+                * ((testMales * maleDailyNeed.getCalories()) + (testFemales * femaleDailyNeed.getCalories()) +
+                        (testOverEight * childOverDailyNeed.getCalories())
+                        + (testUnderEight * childUnderDailyNeed.getCalories()));
+        long found = ClientDailyNeedData.calculateWeeklyFamilyTotalCalories(family);
+        assertEquals("Method CalculateWeeklyFamilyTotalCalories() did not return the expected result: ", expected, found);
+    }
 
     
 

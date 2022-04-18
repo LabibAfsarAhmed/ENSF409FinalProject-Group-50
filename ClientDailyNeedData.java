@@ -34,7 +34,7 @@ public class ClientDailyNeedData {
         return familyProfile;
     }
 
-    public static long calculateWeeklyFamilyWholeGrains(FamilyProfile familyProfile) {
+    public static long calculateWeeklyFamilyWholeGrains(FamilyProfile familyProfile) {  //changed to public
         long wholeGrains = 0;
         if (familyProfile.getAdultMales() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);
@@ -58,7 +58,7 @@ public class ClientDailyNeedData {
         return wholeGrains;
     }
 
-    private static long calculateWeeklyFamilyFruitVeggies(FamilyProfile familyProfile) {
+    public static long calculateWeeklyFamilyFruitVeggies(FamilyProfile familyProfile) {  //changed to public
         long fruitVeggies = 0;
         if (familyProfile.getAdultMales() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);
@@ -82,7 +82,7 @@ public class ClientDailyNeedData {
         return fruitVeggies;
     }
 
-    private static long calculateWeeklyFamilyProtein(FamilyProfile familyProfile) {
+    public static long calculateWeeklyFamilyProtein(FamilyProfile familyProfile) {  //changed to public
         long protein = 0;
         if (familyProfile.getAdultMales() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);
@@ -106,7 +106,7 @@ public class ClientDailyNeedData {
         return protein;
     }
 
-    private static long calculateWeeklyFamilyOther(FamilyProfile familyProfile) {
+    public static long calculateWeeklyFamilyOther(FamilyProfile familyProfile) {  //changed to public
         long other = 0;
         if (familyProfile.getAdultMales() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);
@@ -130,7 +130,7 @@ public class ClientDailyNeedData {
         return other;
     }
 
-    private static int calculateWeeklyFamilyTotalCalories(FamilyProfile familyProfile) {
+    public static int calculateWeeklyFamilyTotalCalories(FamilyProfile familyProfile) {  //changed to public
         int totalCalories = 0;
         if (familyProfile.getAdultMales() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);
