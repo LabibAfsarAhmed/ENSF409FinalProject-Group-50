@@ -16,7 +16,7 @@ The Unit tests have been designed to work with the original given database (inve
 - All the library packages are in ./lib.
 - The original database (Inventory.sql) is in root.
 
-## To Run on Windows
+## To Compile on Windows
 
 Assuming in the working directory
 
