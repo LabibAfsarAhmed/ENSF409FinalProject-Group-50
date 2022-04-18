@@ -1,5 +1,4 @@
 
-
 public class FamilyProfile {
     private int adultFemales;
     private int adultMales;
@@ -16,7 +15,6 @@ public class FamilyProfile {
         this.childrenUnder8 = childrenUnder8;
         this.weeklyServiceHampers = weeklyServiceHampers;
     }
-
 
     public int getAdultFemales() {
         return this.adultFemales;
