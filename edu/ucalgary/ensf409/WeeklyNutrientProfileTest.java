@@ -37,53 +37,62 @@ public class WeeklyNutrientProfileTest {
     }
 
     //test method getWholeGrain()
-    //DailyNeed has tested 7 arguments inside the dailyNeed variable
-    //testing whether the the correct amount of whole grains has been returned based on the arbitrary testing values above       @Test
+    //DailyNeed has tested 5 arguments inside the dailyNeed variable
+    //testing whether the the correct amount of whole grains has been returned based on the arbitrary testing values above       
+    @Test
     public void testGetWholeGrain() {
         WeeklyNutrientProfile weeklyNutrient = new WeeklyNutrientProfile(testWholeGrains,
                 testFruitVeggies, testProtein, testOther, testCalories);
         long expectedValue = testWholeGrains;
-        long foundValue = weeklyNutrient.getWholeGrain();
+        long foundValue = weeklyNutrient.getWholeGrain(); //foundValue obtained from WeeklyNutrientProfile class for getWholeGrain
         assertEquals("Method getWholeGrain did not return the expected result: ", expectedValue, foundValue);
     }
 
     // test method getFruitsVeggies()
+    //DailyNeed has tested 5 arguments inside the dailyNeed variable
+    //testing whether the the correct amount of fruits and vegetables has been returned based on the arbitrary testing values above    
     @Test
     public void testGetFruitsVeggies() {
         WeeklyNutrientProfile weeklyNutrient = new WeeklyNutrientProfile(testWholeGrains,
                 testFruitVeggies, testProtein, testOther, testCalories);
         long expectedValue = testFruitVeggies;
-        long foundValue = weeklyNutrient.getFruitVeggies();
+        long foundValue = weeklyNutrient.getFruitVeggies(); //foundValue obtained from WeeklyNutrientProfile class for getFruitsVeggies
         assertEquals("Method getFruitsVeggies did not return the expected result: ", expectedValue, foundValue);
     }
 
     // test method getProtein()
+    //DailyNeed has tested 5 arguments inside the dailyNeed variable
+    //testing whether the the correct amount of protein has been returned based on the arbitrary testing values above    
     @Test
     public void testGetProtein() {
         WeeklyNutrientProfile weeklyNutrient = new WeeklyNutrientProfile(testWholeGrains,
                 testFruitVeggies, testProtein, testOther, testCalories);
         long expectedValue = testProtein;
-        long foundValue = weeklyNutrient.getProtein();
+        long foundValue = weeklyNutrient.getProtein(); //foundValue obtained from WeeklyNutrientProfile class for getProtein
         assertEquals("Method getProtein did not return the expected result: ", expectedValue, foundValue);
     }
 
     // test method getOther()
+    //DailyNeed has tested 5 arguments inside the dailyNeed variable
+    //testing whether the the correct amount of other food items has been returned based on the arbitrary testing values above    
     @Test
     public void testGetOther() {
         WeeklyNutrientProfile weeklyNutrient = new WeeklyNutrientProfile(testWholeGrains,
                 testFruitVeggies, testProtein, testOther, testCalories);
         long expectedValue = testOther;
-        long foundValue = weeklyNutrient.getOther();
+        long foundValue = weeklyNutrient.getOther(); //foundValue obtained from WeeklyNutrientProfile class for getOthers
         assertEquals("Method getOther did not return the expected result: ", expectedValue, foundValue);
     }
 
     // test method getCalories()
+    //DailyNeed has tested 5 arguments inside the dailyNeed variable
+    //testing whether the the correct amount of calories has been returned based on the arbitrary testing values above    
     @Test
     public void testGetCalories() {
         WeeklyNutrientProfile weeklyNutrient = new WeeklyNutrientProfile(testWholeGrains,
                 testFruitVeggies, testProtein, testOther, testCalories);
         long expectedValue = testCalories;
-        long foundValue = weeklyNutrient.getCalories();
+        long foundValue = weeklyNutrient.getCalories(); //foundValue obtained from WeeklyNutrientProfile class for getCalories
         assertEquals("Method getCalories did not return the expected result: ", expectedValue, foundValue);
     }
 }
