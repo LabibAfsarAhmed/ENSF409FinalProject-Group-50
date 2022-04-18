@@ -24,9 +24,8 @@ public class HamperCreatorTest{
     List<FoodItem> sampleFood = new ArrayList<FoodItem>();
     String testEmployee = "Sam";
     List<FamilyProfile> expectedFamilies = createSampleFamilies(requestedFamilies);
-    List<FamilyProfile> badFamilies = createSampleFamiliesBad(requestedFamilies);
+    
     Order order = new Order(testEmployee,expectedFamilies);
-    //Order badOrder = new Order(testEmployee, badFamilies);
 
     // this initlializes the sample list of requested families
     public List<FamilyProfile> createSampleFamilies(List<FamilyProfile> requestedFamilies) {
@@ -43,25 +42,26 @@ public class HamperCreatorTest{
         requestedFamilies.add(family1);
         requestedFamilies.add(family2);
         return requestedFamilies;
-    }
+    } 
 
 
 
     //test constructor
-  /*  @Test
+    @Test
     public void testHamperCreator(){
         HamperCreator testCreator = new HamperCreator(order);
         assertNotNull("HamperConstructor did not create an object when given valid arguments.",
                 testCreator);
-    } */
+    } 
 
 
+    //test RunTimeException
     @Test
-    public void testRunTimeException(){
+    public void testRunTimeException(){                   //test is supposed to fail as the data is bad, so the exception is caught successfully
+        List<FamilyProfile> badFamilies = createSampleFamiliesBad(requestedFamilies);
         Order badOrder = new Order(testEmployee, badFamilies);
-        HamperCreator testCreate = new HamperCreator(badOrder);
+        HamperCreator badHamper = new HamperCreator(badOrder);
         try{
-            //long totalGrain = 10000000;
             long expected = InventoryData.getTotalGrain();
             fail("HamperCreator method did not throw RunTimeException when given a date not contained within the data.");
         }
@@ -71,8 +71,14 @@ public class HamperCreatorTest{
         catch (Exception e){
             fail("HamperCreator method threw an unexpected exception when given a date not contained within the data.");            
         }
-    }
-       
+    }  
+       // test buildHamper()
+    @Test
+    public void testBuildHamper(){
+        Hamper testHamper = new Hamper(sampleFood);
+        assertNotNull("BuildHamper did not create an object when given valid arguments.",
+                testHamper);
 
+    }
     }
 
