@@ -15,7 +15,7 @@ import java.util.List;
 public class InventoryData {
     /**
      * getFoodItems method to retireve all the available food from the database
-     * @throws Exception if list of food items can't be obtained
+     * @catches Exception if list of food items can't be obtained
      * @return items - i.e. list of food items available in the inventory
      */
     public static List<FoodItem> getFoodItems() {
@@ -62,7 +62,7 @@ public class InventoryData {
     /**
      * 
      * @param column - column of items from SQL table
-     * @throws Exception if sum wasn't able to be calculated correctly
+     * @catches Exception if sum wasn't able to be calculated correctly
      * @return total - total number of items added to the hamper 
      */
     private static long getTotal(String column) {

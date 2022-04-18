@@ -17,7 +17,7 @@ public class ClientDailyNeedData {
      * 
      * @param clientId clientId is the ID assigned to each client for retrieval purposes
      * @return dailyNeed  
-     * @throws Exception throws an exception if the the SQL file can't be access
+     * @catches Exception catches an exception if the the SQL file can't be access
      */
     public static DailyNeed getDailyNeed(int clientId) {
         DailyNeed dailyNeed = null;
@@ -62,7 +62,7 @@ public class ClientDailyNeedData {
      * @param familyProfile linking to the FamilyProfile class to get every type of family member
      * @return whole grain content for the week
      */
-    private static long calculateWeeklyFamilyWholeGrains(FamilyProfile familyProfile) {
+    public static long calculateWeeklyFamilyWholeGrains(FamilyProfile familyProfile) {
         long wholeGrains = 0;
         if (familyProfile.getAdultMales() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);   //set adult males to have client ID #1
@@ -91,7 +91,7 @@ public class ClientDailyNeedData {
      * @param familyProfile linking to the FamilyProfile class to get every type of family member
      * @return fruits and veggies content for the week
      */
-    private static long calculateWeeklyFamilyFruitVeggies(FamilyProfile familyProfile) {
+    public static long calculateWeeklyFamilyFruitVeggies(FamilyProfile familyProfile) {
         long fruitVeggies = 0;
         if (familyProfile.getAdultMales() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);   //set adult males to have client ID #1
@@ -120,7 +120,7 @@ public class ClientDailyNeedData {
      * @param familyProfile linking to the FamilyProfile class to get every type of family member
      * @return protein content for the week
      */
-    private static long calculateWeeklyFamilyProtein(FamilyProfile familyProfile) {
+    public static long calculateWeeklyFamilyProtein(FamilyProfile familyProfile) {
         long protein = 0;
         if (familyProfile.getAdultMales() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);  //set adult males to have client ID #1
@@ -149,7 +149,7 @@ public class ClientDailyNeedData {
      * @param familyProfile linking to the FamilyProfile class to get every type of family member
      * @return other content for the week
      */
-    private static long calculateWeeklyFamilyOther(FamilyProfile familyProfile) {
+    public static long calculateWeeklyFamilyOther(FamilyProfile familyProfile) {
         long other = 0;
         if (familyProfile.getAdultMales() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);  //set adult males to have client ID #1
@@ -179,7 +179,7 @@ public class ClientDailyNeedData {
      * @return calories content for the week
      */
 
-    private static int calculateWeeklyFamilyTotalCalories(FamilyProfile familyProfile) {
+    public static int calculateWeeklyFamilyTotalCalories(FamilyProfile familyProfile) {
         int totalCalories = 0;
         if (familyProfile.getAdultMales() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);  //set adult males to have client ID #1

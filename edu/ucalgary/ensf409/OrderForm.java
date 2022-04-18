@@ -31,8 +31,8 @@ public class OrderForm {
 
     /** 
      * method outputText to print the hamper created into a .txt file
-     * @throws FileNotFoundException when file can't be opened
-     * @throw IOException when output file can't be written - error in the IO
+     * @catches FileNotFoundException when file can't be opened
+     * @catches IOException when output file can't be written - error in the IO
      */
     public void outputText() {
         try {

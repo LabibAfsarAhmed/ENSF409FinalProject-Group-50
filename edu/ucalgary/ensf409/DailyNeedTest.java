@@ -16,6 +16,7 @@ import java.util.*;
 public class DailyNeedTest{
         
         //sample data
+        //this data is used for testing
         int testId = 30;
         String testClientType = "Adult Male";
         int testWholeGrains = 55;
@@ -24,7 +25,12 @@ public class DailyNeedTest{
         int testOther = 25;
         int testCalories = 1000;
 
-        //test constructor
+        /**
+         * test Constructor for DailyNeed class
+         * DailyNeed constructor is testing the validity of the 7 arguments
+         * stored under dailyNeedConstructor
+         * testing whether the DailyNeed constructor returns an object when called properly
+         */        
         @Test
         public void testDailyNeedConstructor(){
                 DailyNeed dailyNeedConstructor = new DailyNeed(testId,testClientType,testWholeGrains,
@@ -32,7 +38,12 @@ public class DailyNeedTest{
                 assertNotNull("DailyNeed constructor did not create an object when given valid arguments.",
                                 dailyNeedConstructor);
         }
-        //test method getId()
+        
+         /**
+         * test method getId()
+         * getId should return the correct food ID when called properly
+         * test passes when the expected item ID is found, and testing to see if it matches with the ID in the database
+         */
         @Test
         public void testGetId(){
                 DailyNeed dailyNeed = new DailyNeed(testId, testClientType, testWholeGrains,
