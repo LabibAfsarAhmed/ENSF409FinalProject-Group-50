@@ -40,7 +40,7 @@ public class FamilyProfileTest{
                                            testUnderEight, testWeeklyService);
         int expectedValue = testFemales;
         int foundValue = familyProfile.getAdultFemales();
-        assertEquals("Method getAdultsFemales did not return the expected result: ", expectedValue, foundValue);
+        assertEquals("Method getAdultFemales did not return the expected result: ", expectedValue, foundValue);
     }
 
     // test getAdultMales()
@@ -50,7 +50,7 @@ public class FamilyProfileTest{
                 testUnderEight, testWeeklyService);
         int expectedValue = testMales;
         int foundValue = familyProfile.getAdultMales();
-        assertEquals("Method getAdultsMales did not return the expected result: ", expectedValue, foundValue);
+        assertEquals("Method getAdultMales did not return the expected result: ", expectedValue, foundValue);
     }
 
     // test getChildrenOver8()
