@@ -15,6 +15,12 @@ import java.sql.*;
 
 
 public class ClientDailyNeedDataTest{
+    /**
+     * composition of each family
+     * boolean for weekly service needed is true 
+     * the numbers get passed to the family profile to create the family
+     * the client ID is obtained from the getter in the ClientDailyNeedData file
+     */
     int testFemales = 2;
     int testMales = 2;
     int testUnderEight = 1;
@@ -30,6 +36,11 @@ public class ClientDailyNeedDataTest{
     
 
     // test calculateWeeklyFamilyWholeGrains()
+    /**
+     * takes number of the number of males in each family and multiplies it by their daily needs
+     * then, this value is multiplied by 7 for the the whole week
+     * this process is reepeated for every food item
+     */
     @Test
     public void testCalculateWeeklyFamilyWholeGrains(){
         //ClientDailyNeedData familyTest = new ClientDailyNeedData();

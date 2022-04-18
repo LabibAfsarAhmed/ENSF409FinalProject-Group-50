@@ -17,6 +17,11 @@ import java.util.ArrayList;
 
 
 public class HamperCreatorTest{
+    /**
+     * initialized the new list for family profile
+     * initialize a list of hamper - requested families
+     * initializes list of food items
+     */
     List<FamilyProfile> requestedFamilies = new ArrayList<FamilyProfile>();
     List<Hamper> initializeHampers = new ArrayList<Hamper>();
     List<FoodItem> sampleFood = new ArrayList<FoodItem>();
@@ -25,24 +30,35 @@ public class HamperCreatorTest{
     
     Order order = new Order(testEmployee,expectedFamilies);
 
-    // this initlializes the sample list of requested families
+    /**
+     * this initlializes the sample list of requested families
+     * create sameple and adds it to requested family list
+     * @param requestedFamilies is referencing the FamilyProfile class
+     * @return requestedFamilies
+     */
     public List<FamilyProfile> createSampleFamilies(List<FamilyProfile> requestedFamilies) {
-        FamilyProfile family1 = new FamilyProfile(1, 1, 1, 1, true);
+        //an example of family that requires weekly service due to mobility issues
+        FamilyProfile family1 = new FamilyProfile(1, 1, 1, 1, true); 
+        //an example of family that doesn't require weekly service due to mobility issues
         FamilyProfile family2 = new FamilyProfile(2, 1, 0, 0, false);
+        //adds family 1 and 2 into the requested family list
         requestedFamilies.add(family1);
         requestedFamilies.add(family2);
         return requestedFamilies;
     }
-    //create bad data
-    public List<FamilyProfile> createSampleFamiliesBad(List<FamilyProfile> requestedFamilies) {
-        FamilyProfile family1 = new FamilyProfile(321, 1, 13, 1, true);
-        FamilyProfile family2 = new FamilyProfile(42, 19, 0, 0, false);
-        requestedFamilies.add(family1);
-        requestedFamilies.add(family2);
-        return requestedFamilies;
-    } 
+    // //create bad data
+    // public List<FamilyProfile> createSampleFamiliesBad(List<FamilyProfile> requestedFamilies) {
+    //     FamilyProfile family1 = new FamilyProfile(321, 1, 13, 1, true);
+    //     FamilyProfile family2 = new FamilyProfile(42, 19, 0, 0, false);
+    //     requestedFamilies.add(family1);
+    //     requestedFamilies.add(family2);
+    //     return requestedFamilies;
+    // } 
 
-    //test constructor
+    /**
+     * test Hamper Creator constructor
+     * checks if the constructor has made an object
+     */
     @Test
     public void testHamperCreator(){
         HamperCreator testCreator = new HamperCreator(order);
@@ -69,7 +85,10 @@ public class HamperCreatorTest{
     //     }
     // }  
 
-    // test buildHamper()
+    /**
+     * test buildHamper() 
+     * builds the hamper constructor
+     */
     @Test
     public void testBuildHamper(){
         Hamper testHamper = new Hamper(sampleFood);
