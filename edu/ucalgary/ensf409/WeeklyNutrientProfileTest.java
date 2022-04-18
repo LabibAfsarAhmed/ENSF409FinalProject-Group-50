@@ -17,14 +17,16 @@ import java.util.*;
 public class WeeklyNutrientProfileTest {
 
     // sample data
-
     long testWholeGrains = 55;
     long testFruitVeggies = 20;
     long testProtein = 30;
     long testOther = 25;
     long testCalories = 1000;
 
-    // test constructor
+    /**
+     * test WeeklyNutrientconstructor
+     * 
+     */
     @Test
     public void testWeeklyNutrientConstructor() {
         WeeklyNutrientProfile weeklyNutrientConstructor = new WeeklyNutrientProfile(testWholeGrains,

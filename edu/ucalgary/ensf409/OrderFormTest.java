@@ -14,21 +14,27 @@ import org.junit.*;
 import java.io.*;
 import java.util.*;
 
-// testing order form and making sure file has been created
-public class OrderFormTest {
-    private List<FamilyProfile> requestedFamilies = new ArrayList<>();
+
+public class OrderFormTest{
+    /**
+     * test to ensure that the text file has been created successfuly
+     * Note: program must be run first for the test to pass
+     * @throws Exception if new order wasn't created from OrderForm
+     */
+    private List<FamilyProfile> requestedFamilies = new ArrayList<>(); //creates a new array list of different
+                                                                       // families from family profile
 
     @Test
-    public void CreateTxtFile() {
-        Order newOrder = null;
+     public void CreateTxtFile(){
+            Order newOrder = null;         //start with an empty order
 
-        try {
-            newOrder = new Order("Sam", requestedFamilies);
-            OrderForm orderForm = new OrderForm(newOrder);
-        } catch (Exception e) {
+            try{
+                newOrder = new Order("Sam", requestedFamilies); //Order will take a string, and an array list of requested families
+                OrderForm orderForm = new OrderForm(newOrder);     //to create the new order form
+            }catch(Exception e){
 
-        }
-        boolean check = new File("orderform.txt").exists();
-        assertTrue("Error: order failed to print.", check);
-    }
+            }
+            boolean check = new File("orderform.txt").exists();  //check if the orderform.txt file exsists
+            assertTrue("Error: order failed to print.", check);   //if not, show the error statement
+      }
 }

@@ -17,6 +17,10 @@ import java.util.List;
 public class HamperCreator {
     private Order order;
 
+    /**
+     * constructor for HamperCreator class 
+     * @param order - order variable calls the Order class where it sends the hamper created to order
+     */
     public HamperCreator(Order order) {
         List<FamilyProfile> familyProfiles = order.getRequestedFamilies();
         for (FamilyProfile familyProfile : familyProfiles) {
@@ -44,6 +48,11 @@ public class HamperCreator {
         this.order = order;
     }
 
+    /**
+     * buildHamper method to construct the hamper based on number of family members, available food items,
+     * and whether the family requies weekly serive
+     * these information will be available in the text file created for the order
+     */
     public void buildHamper() {
         List<Hamper> hampers = new ArrayList<>();
         List<FamilyProfile> familyProfiles = order.getRequestedFamilies();
