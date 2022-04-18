@@ -34,7 +34,7 @@ public class ClientDailyNeedData {
         return familyProfile;
     }
 
-    private static long calculateWeeklyFamilyWholeGrains(FamilyProfile familyProfile) {
+    public static long calculateWeeklyFamilyWholeGrains(FamilyProfile familyProfile) {
         long wholeGrains = 0;
         if (familyProfile.getAdultMales() > 0) {
             DailyNeed maleDailyNeed = getDailyNeed(1);

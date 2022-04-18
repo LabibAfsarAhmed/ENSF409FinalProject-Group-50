@@ -12,73 +12,39 @@ import org.junit.*;
 
 
 public class ClientDailyNeedDataTest{
-    int testAdultMaleGrains = 385;
-    int testAdultFemaleGrains  = 350;
-    int testChildUnderEightGrains  = 175;
-    int testChildOverEightGrains  = 140;
+    int testFemales = 1;
+    int testMales = 2;
+    int testUnderEight = 3;
+    int testOverEight = 4;
+    boolean testWeeklyService = true;
+    FamilyProfile family = new FamilyProfile(testFemales, testMales, testOverEight,
+            testUnderEight, testWeeklyService);
+    DailyNeed female = new DailyNeed(2, "Adult Female", 100, 90,200, 10,2000);
+    DailyNeed male = new DailyNeed(1, "Adult Male", 120, 100, 300, 70, 2700);
+    DailyNeed childrenOver8 = new DailyNeed(1, "Children Over 8", 60, 180, 100, 30, 3000);
+    DailyNeed childrenUnder8 = new DailyNeed(1, "Children Under 8", 80, 380, 120, 40, 3400);
 
-    int testAdultMaleFV= 385;
-    int testAdultFemaleFV= 350;
-    int testChildUnderEightFV = 175;
-    int testChildOverEightFV  = 140;
+            //test constructor
+   /* @Test
+    public void calculateWeeklyFamilyNeeds(){
 
-    int testAdultMalePro= 385;
-    int testAdultFemalePro= 350;
-    int testChildUnderEightPro= 175;
-    int testChildOverEightPro = 140;
+    } */
+    //test calculateWeeklyFamilyWholeGrains()
+    @Test
+    public void testCalculateWeeklyFamilyWholeGrains(){
+        //ClientDailyNeedData familyTest = new ClientDailyNeedData();
+        long expected = 7*((testMales * 120) + (testFemales * 100)+ (testOverEight * 60) + (testUnderEight * 80));
+        long found = ClientDailyNeedData.calculateWeeklyFamilyWholeGrains(family);
+        assertEquals("Method CalculateWeeklyFamilyWholeGrains() did not return the expected result: ", expected, found);
 
-    int testAdultMaleOther= 385;
-    int testAdultFemaleOther= 350;
-    int testChildUnderEightOther= 175;
-    int testChildOverEightOther = 140;
-
-    int testAdultMaleCalories = 385;
-    int testAdultFemaleCalories= 350;
-    int testChildUnderEightCalories= 175;
-    int testChildOverEightCalories = 140;
-
-    int testID = 1;
-
-    public void calculateWeeklyFamilyNeedsConstructorAdultMale(){
-        //DailyNeed testConstructor = new DailyNeed(1,"Adult Male",testAdultMaleGrains,testAdultMaleFV,testAdultMalePro, testAdultMaleOther, testAdultMaleCalories);
-        //DailyNeed DailyNeedConstructorMale = testConstructor.getDailyNeed(1);
-        ClientDailyNeedData con = new ClientDailyNeedData();
-        ClientDailyNeedData expected = con.getDailyNeed(1);
-        assertNotNull("Daily Need constructor did not create an object when given valid arguments.", DailyNeedConstructorMale);
     }
+
+    //test calculateWeeklyFamilyFruitVeggies()
+    @Test
+    public void testCalculateWeeklyFamilyFruitVeggies(){
+
+    }
+
     
-    public void calculateWeeklyFamilyNeedsConstructorAdultFemale(){
-        DailyNeed DailyNeedConstructorFemale = getDailyNeed(2);
-        assertNotNull("Daily Need constructor did not create an object when given valid arguments.", DailyNeedConstructorFemale);
-    }
-    
-
-    public void calculateWeeklyFamilyNeedsConstructorChildOverEight(){
-            DailyNeed DailyNeedConstructorChildOverEight = getDailyNeed(3);
-            assertNotNull("Daily Need constructor did not create an object when given valid arguments.", DailyNeedConstructorChildOverEight);
-    }
-    
-
-    public void calculateWeeklyFamilyNeedsConstructorChildUnderEight(){
-        DailyNeed DailyNeedConstructorChildUnderEight = getDailyNeed(4);
-        assertNotNull("Daily Need constructor did not create an object when given valid arguments.", DailyNeedConstructorChildUnderEight);
-    }
-
-    @Test 
-        public void calculateWeeklyFamilyWholeGrains(){
-            ClientDailyNeedData newData = new ClientDailyNeedData();
-            int wholeGrainforOneDay = newData.getWholeGrain(testAdultMaleGrains, testNameId, testAdultFemaleGrains, testChildUnderEightGrains, testChildOverEightGrains);
-            int totalGrains = 1020;
-            assertEquals("Method for whole grains didn't return expected values", totalGrains, wholeGrainforOneDay);
-        }
-
-    @Test 
-        public void calculateWeeklyFamilyFruitVeggies(){}
-
-    @Test 
-        public void calculateWeeklyFamilyProtein(){}
-
-
-
 
 }
