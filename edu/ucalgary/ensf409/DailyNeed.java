@@ -44,6 +44,7 @@ public class DailyNeed {
         this.other = other;
         this.calories = calories;
     }
+    
     /**
      * getter method for family id
      * @return id of client
@@ -88,8 +89,6 @@ public class DailyNeed {
      * getter method for other food items
      * @return other
      */
-
-
     public int getOther() {
         return other;
     }
