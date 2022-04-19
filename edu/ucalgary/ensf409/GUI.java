@@ -177,6 +177,10 @@ public class GUI {
         if (adultFemales < 0 || adultMales < 0 || childrenOver8Yrs < 0 || childrenUnder8Yrs < 0) {
             throw new IllegalArgumentException();
         }
+        if(families > 10){
+            throw new IllegalArgumentException("Maximum families per order is 10");
+        }
+
 
         // creates a family object and adds it to list with the collected values from
         // the GUI
