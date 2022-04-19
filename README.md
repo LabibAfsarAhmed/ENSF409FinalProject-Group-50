@@ -22,7 +22,7 @@ This is our ENSF 409 final project (Group-50) repository.
 Assuming in the working directory
 
 ```
-javac -cp .;lib/mysql-connector-java-8.0.23.jar;. edu/ucalgary/ensf409/*.java
+javac -cp .;lib/mysql-connector-java-8.0.23.jar;. edu/ucalgary/ensf409/GUI.java
 ```
 
 ## To Run on Windows
