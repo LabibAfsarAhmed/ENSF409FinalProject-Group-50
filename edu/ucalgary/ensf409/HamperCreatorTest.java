@@ -22,38 +22,30 @@ public class HamperCreatorTest{
      * initialize a list of hamper - requested families
      * initializes list of food items
      */
-    List<FamilyProfile> requestedFamilies = new ArrayList<FamilyProfile>();
+    List<FamilyProfile> familiesRequested = new ArrayList<FamilyProfile>();
     List<Hamper> initializeHampers = new ArrayList<Hamper>();
     List<FoodItem> sampleFood = new ArrayList<FoodItem>();
-    String testEmployee = "Sam";
-    List<FamilyProfile> expectedFamilies = createSampleFamilies(requestedFamilies);
+    String sampleEmployee = "Sam";
+    List<FamilyProfile> familiesExpected = createSampleFamilies(familiesRequested);
     
-    Order order = new Order(testEmployee,expectedFamilies);
+    Order order = new Order(sampleEmployee,familiesExpected);
 
     /**
      * this initlializes the sample list of requested families
      * create sameple and adds it to requested family list
-     * @param requestedFamilies is referencing the FamilyProfile class
-     * @return requestedFamilies
+     * @param familiesRequested is referencing the FamilyProfile class
+     * @return familiesRequested
      */
-    public List<FamilyProfile> createSampleFamilies(List<FamilyProfile> requestedFamilies) {
+    public List<FamilyProfile> createSampleFamilies(List<FamilyProfile> familiesRequested) {
         //an example of family that requires weekly service due to mobility issues
         FamilyProfile family1 = new FamilyProfile(1, 1, 1, 1, true); 
         //an example of family that doesn't require weekly service due to mobility issues
         FamilyProfile family2 = new FamilyProfile(2, 1, 0, 0, false);
         //adds family 1 and 2 into the requested family list
-        requestedFamilies.add(family1);
-        requestedFamilies.add(family2);
-        return requestedFamilies;
+        familiesRequested.add(family1);
+        familiesRequested.add(family2);
+        return familiesRequested;
     }
-    // //create bad data
-    // public List<FamilyProfile> createSampleFamiliesBad(List<FamilyProfile> requestedFamilies) {
-    //     FamilyProfile family1 = new FamilyProfile(321, 1, 13, 1, true);
-    //     FamilyProfile family2 = new FamilyProfile(42, 19, 0, 0, false);
-    //     requestedFamilies.add(family1);
-    //     requestedFamilies.add(family2);
-    //     return requestedFamilies;
-    // } 
 
     /**
      * test Hamper Creator constructor
@@ -65,26 +57,6 @@ public class HamperCreatorTest{
         assertNotNull("HamperConstructor did not create an object when given valid arguments.",
                 testCreator);
     } 
-
-
-    //test RunTimeException
-    // @Test
-    // public void testRunTimeException(){          //test is supposed to fail as the data is bad, so the exception is caught successfully
-    //     List<FamilyProfile> badFamilies = createSampleFamiliesBad(requestedFamilies);
-    //     Order badOrder = new Order(testEmployee, badFamilies);
-    //     HamperCreator badHamper = new HamperCreator(badOrder);
-    //     try{
-    //         long expected = InventoryData.getTotalGrain();
-    //         fail("HamperCreator method did not throw RunTimeException when given a date not contained within the data.");
-    //     }
-    //     catch (RuntimeException e){
-    //         assertTrue(true);
-    //     }
-    //     catch (Exception e){
-    //         fail("HamperCreator method threw an unexpected exception when given a date not contained within the data.");            
-    //     }
-    // }  
-
     /**
      * test buildHamper() 
      * builds the hamper constructor
