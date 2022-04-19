@@ -13,7 +13,7 @@ This is our ENSF 409 final project (Group-50) repository.
 
 - All .java files are in .edu/ucalgary/ensf409.
 - The UML diagram is in root.
-- All the library packages are in ./lib.
+- All the library packages are in lib.
 - The original database (Inventory.sql) is in root.
 
 ## To Compile on Windows
