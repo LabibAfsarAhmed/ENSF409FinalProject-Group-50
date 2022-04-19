@@ -13,7 +13,6 @@ This is our ENSF 409 final project (Group-50) repository.
 
 - All .java files are in .edu/ucalgary/ensf409.
 - The UML diagram is in root.
-- The Video Demonstration is in root.
 - All the library packages are in ./lib.
 - The original database (Inventory.sql) is in root.
 
@@ -48,6 +47,7 @@ Assuming in working directory
 ```
 java -cp .;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar;lib/mysql-connector-java-8.0.23.jar org.junit.runner.JUnitCore edu.ucalgary.ensf409.TestFiles
 ```
+
 <br>
 Note: The database username is "student" and password is "ensf".
 <br>
