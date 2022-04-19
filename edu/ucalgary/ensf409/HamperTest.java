@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HamperTest{
-    List<FoodItem> sampleFood = new ArrayList<>();
-    List<FoodItem> testFood = createFoodItems(sampleFood);
+    List<FoodItem> sampleFoodHamper = new ArrayList<>();
+    List<FoodItem> testFood = createFoodItems(sampleFoodHamper);
 
     /**
      * method to create sample food item for testing
@@ -41,7 +41,7 @@ public class HamperTest{
      */
     @Test
     public void testHamperConstructor(){
-        Hamper testHamper = new Hamper(sampleFood); //testHamper is successfuly returned if the sample food was in the hamper
+        Hamper testHamper = new Hamper(sampleFoodHamper); //testHamper is successfuly returned if the sample food was in the hamper
         assertNotNull("hamper constructor did not create an object when given valid arguments.",
                 testHamper);
     }
@@ -53,7 +53,7 @@ public class HamperTest{
      */
     @Test
     public void testGetFoodItems(){
-        Hamper testHamper = new Hamper(sampleFood);
+        Hamper testHamper = new Hamper(sampleFoodHamper);
         List <FoodItem> expected = testFood; //expected value obtained from the sample food item list
         List<FoodItem> found = testHamper.getFoodItems();  //found value is obtained from the food item in the hamper
         assertEquals("Method getFoodItems did not return the expected result: ", expected, found);
@@ -64,7 +64,7 @@ public class HamperTest{
      * tests whether the hamper was able to successfuly create a string list with the hamper created
      */
     @Test
-    public void testToString() {
+    public void testToStringHamper() {
         StringBuilder sb = new StringBuilder();
         assertNotNull("StringBuilder did not create a string.",
                 sb);

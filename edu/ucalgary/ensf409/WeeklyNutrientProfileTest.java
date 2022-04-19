@@ -15,8 +15,7 @@ import java.io.*;
 import java.util.*;
 
 public class WeeklyNutrientProfileTest {
-
-    // sample data
+    //sample data for testing
     long testWholeGrains = 55;
     long testFruitVeggies = 20;
     long testProtein = 30;
@@ -25,7 +24,7 @@ public class WeeklyNutrientProfileTest {
 
     /**
      * test WeeklyNutrientconstructor
-     * 
+     * check if the constructor creates an object when the 5 arguments are valid
      */
     @Test
     public void testWeeklyNutrientConstructor() {
@@ -35,53 +34,68 @@ public class WeeklyNutrientProfileTest {
                 weeklyNutrientConstructor);
     }
 
-    // test method getWholeGrain()
+     /**
+     * test method getWholeGrain()
+     * checks if the family needs of whole grains for the entire week has been met 
+     */
     @Test
-    public void testGetWholeGrain() {
+    public void testWeeklyGetWholeGrain() {
         WeeklyNutrientProfile weeklyNutrient = new WeeklyNutrientProfile(testWholeGrains,
                 testFruitVeggies, testProtein, testOther, testCalories);
-        long expectedValue = testWholeGrains;
-        long foundValue = weeklyNutrient.getWholeGrain();
+        long expectedValue = testWholeGrains;   //expected value obtained from data above
+        long foundValue = weeklyNutrient.getWholeGrain(); 
         assertEquals("Method getWholeGrain did not return the expected result: ", expectedValue, foundValue);
     }
 
-    // test method getFruitsVeggies()
+    /**
+     * test method getFruitsVeggies()
+     * checks if the family needs of fruits and vegetables for the entire week has been met 
+     */
     @Test
-    public void testGetFruitsVeggies() {
+    public void testWeeklyGetFruitsVeggies() {
         WeeklyNutrientProfile weeklyNutrient = new WeeklyNutrientProfile(testWholeGrains,
                 testFruitVeggies, testProtein, testOther, testCalories);
         long expectedValue = testFruitVeggies;
-        long foundValue = weeklyNutrient.getFruitVeggies();
+        long foundValue = weeklyNutrient.getFruitVeggies(); //expected value obtained from data above
         assertEquals("Method getFruitsVeggies did not return the expected result: ", expectedValue, foundValue);
     }
 
-    // test method getProtein()
+     /**
+     * test method getProtein()
+     * checks if the family needs of protein for the entire week has been met 
+     */
     @Test
-    public void testGetProtein() {
+    public void testWeeklyGetProtein() {
         WeeklyNutrientProfile weeklyNutrient = new WeeklyNutrientProfile(testWholeGrains,
                 testFruitVeggies, testProtein, testOther, testCalories);
         long expectedValue = testProtein;
-        long foundValue = weeklyNutrient.getProtein();
+        long foundValue = weeklyNutrient.getProtein(); //expected value obtained from data above
         assertEquals("Method getProtein did not return the expected result: ", expectedValue, foundValue);
     }
 
-    // test method getOther()
+     /**
+     * test method getOther()
+     * checks if the family needs of other food items for the entire week has been met 
+     */
     @Test
-    public void testGetOther() {
+    public void testWeeklyGetOther() {
         WeeklyNutrientProfile weeklyNutrient = new WeeklyNutrientProfile(testWholeGrains,
                 testFruitVeggies, testProtein, testOther, testCalories);
         long expectedValue = testOther;
-        long foundValue = weeklyNutrient.getOther();
+        long foundValue = weeklyNutrient.getOther(); //expected value obtained from data above
         assertEquals("Method getOther did not return the expected result: ", expectedValue, foundValue);
     }
 
-    // test method getCalories()
+    /**
+     * test method getCalories()
+     * checks if the family needs of calories food items for the entire week has been met 
+     */
     @Test
-    public void testGetCalories() {
+    public void testWeeklyGetCalories() {
         WeeklyNutrientProfile weeklyNutrient = new WeeklyNutrientProfile(testWholeGrains,
                 testFruitVeggies, testProtein, testOther, testCalories);
         long expectedValue = testCalories;
-        long foundValue = weeklyNutrient.getCalories();
+        long foundValue = weeklyNutrient.getCalories(); //expected value obtained from data above
         assertEquals("Method getCalories did not return the expected result: ", expectedValue, foundValue);
     }
 }

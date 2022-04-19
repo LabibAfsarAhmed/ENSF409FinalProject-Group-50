@@ -21,13 +21,13 @@ public class OrderFormTest{
      * Note: program must be run first for the test to pass
      * @catches Exception if new order wasn't created from OrderForm
      */
-    private List<FamilyProfile> requestedFamilies = new ArrayList<>(); //creates a new array list of different
+    private List<FamilyProfile> requestedFamiliesForm = new ArrayList<>(); //creates a new array list of different
                                                                        // families from family profile
     @Test
      public void CreateTxtFile(){
             Order newOrder = null;         //start with an empty order
             try{
-                newOrder = new Order("Sam", requestedFamilies); //Order will take a string, and an array list of requested families
+                newOrder = new Order("Sam", requestedFamiliesForm); //Order will take a string, and an array list of requested families
                 OrderForm orderForm = new OrderForm(newOrder);     //to create the new order form
             }catch(Exception e){
 

@@ -30,9 +30,9 @@ public class OrderTest {
     LocalDate testDate = LocalDate.now();
     List<FamilyProfile> requestedFamilies = new ArrayList<FamilyProfile>();
     List<Hamper> initializeHampers = new ArrayList<Hamper>();
-    List<FoodItem> sampleFood = new ArrayList<FoodItem>();
-    List<FoodItem> foodHamper1 = createFoodItems1(sampleFood);
-    List<FoodItem> foodHamper2 = createFoodItems2(sampleFood);
+    List<FoodItem> orderSampleFood = new ArrayList<FoodItem>();
+    List<FoodItem> foodHamper1 = createFoodItems1(orderSampleFood);
+    List<FoodItem> foodHamper2 = createFoodItems2(orderSampleFood);
     List<FamilyProfile> expectedFamilies = createSampleFamilies(requestedFamilies);
     List<Hamper> testHampers = createSampleHampers(initializeHampers, foodHamper1, foodHamper2);
 
@@ -67,39 +67,39 @@ public class OrderTest {
     }
     /**
      * creates sample food for hamper1
-     * @param sampleFood obtained from FoodItem list
+     * @param orderSampleFood obtained from FoodItem list
      * the sample food contians: food id, food name, grain content, fruits and veggies content,
      * protein content, others, and calories per food item
-     * @return sampleFood created
+     * @return orderSampleFood created
      */
-    public List<FoodItem> createFoodItems1(List<FoodItem> sampleFood){
+    public List<FoodItem> createFoodItems1(List<FoodItem> orderSampleFood){
             FoodItem foodItem1 = new FoodItem(34, "Apple", 100,
                 88, 23, 15, 1994);
             FoodItem foodItem2 = new FoodItem(14, "Tomato", 30,
                     80, 13, 10, 194);
-            sampleFood.add(foodItem1);
-            sampleFood.add(foodItem2);
-            return sampleFood;
+            orderSampleFood.add(foodItem1);
+            orderSampleFood.add(foodItem2);
+            return orderSampleFood;
     }
 
     /**
      * creates sample food for hamper2
-     * @param sampleFood obtained from FoodItem list
+     * @param orderSampleFood obtained from FoodItem list
      * the sample food contians: food id, food name, grain content, fruits and veggies content,
      * protein content, others, and calories per food item
-     * @return sampleFood created
+     * @return orderSampleFood created
      */
-    public List<FoodItem> createFoodItems2(List<FoodItem> sampleFood) {
+    public List<FoodItem> createFoodItems2(List<FoodItem> orderSampleFood) {
         FoodItem foodItem1 = new FoodItem(10, "Cherry", 0,
                 100, 0, 0, 35);
         FoodItem foodItem2 = new FoodItem(14, "Tomato", 0,
                 120, 0, 0, 39);
         FoodItem foodItem3 = new FoodItem(14, "Chicken", 0,
                 0, 400, 0, 140);
-        sampleFood.add(foodItem1);
-        sampleFood.add(foodItem2);
-        sampleFood.add(foodItem3);
-        return sampleFood;
+        orderSampleFood.add(foodItem1);
+        orderSampleFood.add(foodItem2);
+        orderSampleFood.add(foodItem3);
+        return orderSampleFood;
     }
 
     
@@ -132,7 +132,7 @@ public class OrderTest {
      * to test if a string contains the information has been created
      */
     @Test
-    public void testToString() {
+    public void testToStringOrderTest() {
         StringBuilder sb = new StringBuilder();
         assertNotNull("StringBuilder did not create a string.",
                 sb);
